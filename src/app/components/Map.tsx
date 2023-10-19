@@ -22,9 +22,14 @@ export const MapTest = () => {
 
   const directionsService = new google.maps.DirectionsService();
   const directionsRenderer = new google.maps.DirectionsRenderer();
-
-
+  const service = new google.maps.DistanceMatrixService();
   const mapRef = useRef<HTMLDivElement>(null);
+
+  const [origin, setOrigin] = useState("")
+  const [destination, setDestination] = useState("")
+  
+  const [distance, setDistance] = useState<String | null>()
+  const [time, setTime] = useState<String | null>()
 
   const centeredOnUnip = {
     lat: -23.632608446295116,
@@ -37,8 +42,8 @@ export const MapTest = () => {
   }
 
   var request = {
-    origin: "st louis, mo",
-    destination: "joplin, mo",
+    origin: origin,
+    destination: destination,
     travelMode: google.maps.TravelMode.DRIVING
   }
 
@@ -55,12 +60,22 @@ export const MapTest = () => {
         }
       });
 
+      service.getDistanceMatrix({
+        origins: [origin],
+        destinations: [destination],
+        travelMode: google.maps.TravelMode.DRIVING,
+      }, function (result, status) {
+        if (status == 'OK') {
+          console.log(result);
+          setDistance(result?.rows[0].elements[0].distance?.text);
+          setTime(result?.rows[0].elements[0].duration?.text);
+          
+        }
+      })
     }
-  }, []);
+  }, [origin, destination]);
 
 
-  const [origin, setOrigin] = useState("")
-  const [destination, setDestination] = useState("")
 
 
   return (
@@ -74,6 +89,10 @@ export const MapTest = () => {
 
           <input className="bg-white text-black w-full py-1 px-1 border-none" type="search" onChange={(e) => setDestination(e.target.value)} />
           <p>{destination}</p>
+
+          <p>{distance}</p>
+
+          <p>{time}</p>
 
           <button>
             Traçar a rota
