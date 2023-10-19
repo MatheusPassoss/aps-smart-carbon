@@ -27,7 +27,7 @@ export const MapTest = () => {
 
   const [origin, setOrigin] = useState("")
   const [destination, setDestination] = useState("")
-  
+
   const [distance, setDistance] = useState<String | null>()
   const [time, setTime] = useState<String | null>()
 
@@ -48,7 +48,7 @@ export const MapTest = () => {
   }
 
 
-  useEffect(() => {
+  function CaclRoute() {
     if (mapRef.current) {
       var map = new google.maps.Map(mapRef.current, mapOptions);
       directionsRenderer.setMap(map);
@@ -69,11 +69,20 @@ export const MapTest = () => {
           console.log(result);
           setDistance(result?.rows[0].elements[0].distance?.text);
           setTime(result?.rows[0].elements[0].duration?.text);
-          
+          setDestination(""); setOrigin("");
         }
       })
     }
-  }, [origin, destination]);
+
+  }
+
+  useEffect(() => {
+
+    if (mapRef.current) {
+      var map = new google.maps.Map(mapRef.current, mapOptions);
+      directionsRenderer.setMap(map);}
+
+  }, []);
 
 
 
@@ -94,7 +103,7 @@ export const MapTest = () => {
 
           <p>{time}</p>
 
-          <button>
+          <button onClick={CaclRoute}>
             Traçar a rota
           </button>
         </aside>
