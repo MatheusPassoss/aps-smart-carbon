@@ -6,13 +6,15 @@ import { useLoadScript } from "@react-google-maps/api";
 import { Button } from "./Button";
 
 
-
-
-
 export const Map = () => {
+
+  const GOOGLE_KEY = "AIzaSyDxZ5VdV_iZ74LcmbnkxF-ekP89bp4iaPg";
+
+
+
   const { isLoaded } = useLoadScript(
     {
-      googleMapsApiKey: "AIzaSyDxZ5VdV_iZ74LcmbnkxF-ekP89bp4iaPg"
+      googleMapsApiKey: GOOGLE_KEY
     }
   )
   if (!isLoaded) {
@@ -103,6 +105,27 @@ export const MapTest = () => {
 
   }
 
+  const testeRequisicao = () => {
+    fetch("https://e09fwv0dl9.execute-api.us-east-1.amazonaws.com/test", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        distance: 200,
+        time: 10,
+      })
+    })
+      .then(response => response.json())
+      .then(data => {
+
+
+      })
+      .catch(error => console.error('Erro:', error));
+  }
+
+
+
   useEffect(() => {
 
     if (mapRef.current) {
@@ -110,7 +133,7 @@ export const MapTest = () => {
       directionsRenderer.setMap(map);
     }
 
-  }, []);
+  });
 
   const [isCar, setCar] = useState<Boolean>(false)
   const [isBus, setBus] = useState<Boolean>(false)
@@ -126,61 +149,56 @@ export const MapTest = () => {
     if (driveMod === "bus") setBus(!isBus);
     if (driveMod === "car") setCar(!isCar);
     if (driveMod === "bike") setBike(!isBike);
-    if (driveMod === "motorcycle") setMotorcycle(!isMotorcycle);
-
-
-
+    // if (driveMod === "motorcycle") setMotorcycle(!isMotorcycle);
 
   }
 
 
+
+
+
   return (
     <>
-      <section className="w-[100vw] h-[100vh] flex flex-col relative">
+      <section className="min-h-[100vh] flex flex-col relative bg-black-custom">
 
-        <aside className={`bg-black-custom w-full py-5 px-3 flex flex-col transition-all`}>
+        <aside className={`container m-auto max-w-7xl jutisfy-center py-5 px-3 flex flex-col transition-all `}>
 
           <label className="py-2 text-white">Origem</label>
           <table className="group flex bg-white rounded-lg border-[1px] border-solid border-[#F0E5D7]">
             <input
               type="text"
               className="w-full px-1 py-1 rounded-lg bg-transparent focus:outline-0 text-black-custom"
-              value={Origin}
+
               onChange={(e) => setOrigin(e.target.value)}
             />
           </table>
 
           <label className="py-2 text-white">Destino</label>
           <table className="group flex bg-white rounded-lg border-[1px] border-solid border-[#F0E5D7]">
-            <input className="w-full px-1 py-1 rounded-lg bg-transparent focus:outline-0 text-black-custom" onChange={(e) => setDestination(e.target.value)} type="text" value={Destination}/>
+            <input className="w-full px-1 py-1 rounded-lg bg-transparent focus:outline-0 text-black-custom" onChange={(e) => setDestination(e.target.value)} type="text" />
           </table>
 
           <h2 className="text-center pt-5 text-lg text-white">Selecione o meio de transporte</h2>
-
-          <fieldset className="flex items-center justify-evenly pt-3">
-            <div className={`px-1 py-1 rounded-lg ${isBus ? "bg-green-custom text text-white" : "bg-default text-[#837c7c]"}`} onClick={() => { defineModeDrive("bus") }}>
+          <fieldset className="flex items-center justify-evenly pt-3 pb-10">
+            <div className={`px-1 py-1 rounded-lg ${isBus ? "bg-green-custom text text-white" : "bg-default text-[#837c7c]"} transition-all`} onClick={() => { defineModeDrive("bus") }}>
               <Bus size={32} weight="fill" />
             </div>
-            <div className={`px-1 py-1 rounded-lg ${isCar ? "bg-green-custom text-white" : "bg-default text-[#837c7c]"}`} onClick={() => { defineModeDrive("car") }}>
+            <div className={`px-1 py-1 rounded-lg ${isCar ? "bg-green-custom text-white" : "bg-default text-[#837c7c]"} transition-all`} onClick={() => { defineModeDrive("car") }}>
               <CarProfile size={32} weight="fill" />
             </div>
-            <div className={`px-1 py-1 rounded-lg ${isBike ? "bg-green-custom text-white" : "bg-default text-[#837c7c]"}`} onClick={() => { defineModeDrive("bike") }}>
+            <div className={`px-1 py-1 rounded-lg ${isBike ? "bg-green-custom text-white" : "bg-default text-[#837c7c]"} transition-all`} onClick={() => { defineModeDrive("bike") }}>
               <PersonSimpleBike size={32} weight="fill" />
             </div>
-            <div className={`px-1 py-1 rounded-lg ${isMotorcycle ? "bg-green-custom text-white" : "bg-default text-[#837c7c]"}`} onClick={() => { defineModeDrive("motorcycle") }}>
-              <Motorcycle size={32} weight="fill" />
-            </div>
           </fieldset>
+          <Button Title={"Traçar rota"} onClick={() => testeRota()} />
 
         </aside>
 
-        <figure ref={mapRef} className="h-screen w-screen"></figure>
+        <figure ref={mapRef} className="min-h-screen"></figure>
 
         <aside className={`bg-black-custom py-8 px-5 flex items-center justify-center transition-all duration-500`}>
-          <button className="bg-green-custom py-1 px-3 w-full text-white rounded-lg" onClick={() => testeRota()}>
-            Traçar rota
-          </button>
-          {/* <Button Title={"Traçar rota"} onClick={() => testeRota()} /> */}
+          <h3>Informações sobre sua rota:</h3>
+        
         </aside>
 
       </section>
