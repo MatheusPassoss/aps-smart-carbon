@@ -16,6 +16,9 @@ const config: Config = {
       textColor: {
         'black-custom': '#1B2E3A'
       },
+      screens: {
+        'small-notbook': '992px'
+      }
     },
   },
   plugins: [],

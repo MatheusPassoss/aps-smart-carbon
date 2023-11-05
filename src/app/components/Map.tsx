@@ -1,21 +1,22 @@
 'use client'
- 
+
 import React, { useState, useRef, useEffect, useContext } from "react";
 import { useLoadScript } from "@react-google-maps/api";
-import { MapProvider } from "@/app/context/MapProvider";
 import { MapContext } from "@/app/context/MapContext";
 import { MapNav } from "./MapNav";
-
+import { Button } from "./Button";
 
 export const Map = () => {
-  const GoogleApiKey = process.env.REACT_APP_GOOGLE_KEY;
+  // const GoogleApiKey = process.env.REACT_APP_GOOGLE_KEY;
+  const GoogleApiKey = "AIzaSyDxZ5VdV_iZ74LcmbnkxF-ekP89bp4iaPg";
 
   if (!GoogleApiKey) {
     return "Chave de API está indefinida ou não pode ser acessada.";
   }
 
   const { isLoaded } = useLoadScript({
-    googleMapsApiKey: GoogleApiKey
+    googleMapsApiKey: GoogleApiKey,
+    libraries: ['places']
   });
 
   if (!isLoaded) {
@@ -23,7 +24,7 @@ export const Map = () => {
   }
 
   return (
-      <MapTest />
+    <MapTest />
   );
 };
 
@@ -35,7 +36,7 @@ export const MapTest = () => {
   const service = new google.maps.DistanceMatrixService();
   const mapRef = useRef<HTMLDivElement>(null);
 
-  const {Origin, Destination} = useContext(MapContext)
+  const { Origin, Destination } = useContext(MapContext)
 
 
   const [distance, setDistance] = useState<String | null>()
@@ -57,15 +58,22 @@ export const MapTest = () => {
     travelMode: google.maps.TravelMode.DRIVING
   };
 
+  useEffect(() => {
+    params.destinations = Destination;
+    params.origins = Origin;
+  }, [Origin, Destination])
+ 
+
 
 
   function CaclRoute(params: any) {
 
-    console.log("Chamou a função!")
+    console.log(`A origem é ${Origin}`)
+
+
+    console.log(params)
 
     if (mapRef.current) {
-      var map = new google.maps.Map(mapRef.current, mapOptions);
-      directionsRenderer.setMap(map);
 
       directionsService.route(params, function (result, status) {
         if (status == 'OK') {
@@ -84,7 +92,6 @@ export const MapTest = () => {
 
   }
 
-
   useEffect(() => {
 
     if (mapRef.current) {
@@ -94,17 +101,13 @@ export const MapTest = () => {
 
   });
 
-
   return (
-    <>
-      <section className="min-h-[100vh] flex flex-col relative bg-black-custom">
-        <MapNav />
-        {/* <figure ref={mapRef} className="min-h-screen"></figure> */}
-        <aside className={`bg-black-custom py-8 px-5 flex items-center justify-center transition-all duration-500`}>
-          <h3>Informações sobre sua rota:</h3>
-        </aside>
-      </section>
-    </>
+    <section className="min-h-[100vh] flex flex-col relative">
+      <MapNav />
+      <div className='py-5'>
+        <Button Title={"Traçar rota"} onClick={() => { CaclRoute(params) }} />
+      </div>
+      <figure ref={mapRef} className="min-h-screen" ></figure>
+    </section>
   );
-
 };

@@ -1,15 +1,17 @@
 'use client'
-import { MouseEventHandler } from "react"
 
 import { createContext } from "react"
+import { ConstructorDeclaration } from "typescript"
 
 interface MapValues {
     defineModeDrive: (driveMod: String) => void,
+    defineOrigin: (origin: string) => void,
+    defineDestination: (destination: string) => void,
     isCar: Boolean,
     isBus: Boolean,
     isBike: Boolean,
-    Origin: String,
-    Destination: String,
+    Origin: string,
+    Destination: string,
 }
 
 

@@ -10,8 +10,9 @@ interface MapProviderProps {
 export const MapProvider = ({ children }: MapProviderProps) => {
 
 
-   const [Origin, setOrigin] = useState<String>("")
-   const [Destination, setDestination] = useState<String>("")
+   var Origin = ""
+   var Destination = ""
+
 
    const [isCar, setCar] = useState<Boolean>(false)
    const [isBus, setBus] = useState<Boolean>(false)
@@ -28,9 +29,18 @@ export const MapProvider = ({ children }: MapProviderProps) => {
       if (driveMod === "bike") setBike(!isBike);
    }
 
+   const defineOrigin = (origin: string) => {
+      Origin = origin
+      console.log(`Definindo a Origem pelo Context. Destino: ${Origin}`);
+   }
+
+   const defineDestination = (destionation: string) => {
+      Destination = destionation;
+      console.log(`Definindo o destino pelo Context. Destino: ${Destination}`);
+   }
 
    return (
-      <MapContext.Provider value={{ defineModeDrive, isCar, isBike, isBus, Origin, Destination }}>
+      <MapContext.Provider value={{defineModeDrive, defineOrigin, defineDestination, isCar, isBike, isBus, Origin, Destination, }}>
          {children}
       </MapContext.Provider>
    )
