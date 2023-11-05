@@ -10,8 +10,8 @@ interface MapProviderProps {
 export const MapProvider = ({ children }: MapProviderProps) => {
 
 
-   var Origin = ""
-   var Destination = ""
+   const [Origin, setOrigin] = useState<string>("")
+   const [Destination, setDestination] = useState<string>("")
 
 
    const [isCar, setCar] = useState<Boolean>(false)
@@ -30,12 +30,12 @@ export const MapProvider = ({ children }: MapProviderProps) => {
    }
 
    const defineOrigin = (origin: string) => {
-      Origin = origin
+      setOrigin(origin)
       console.log(`Definindo a Origem pelo Context. Destino: ${Origin}`);
    }
 
    const defineDestination = (destionation: string) => {
-      Destination = destionation;
+      setDestination(destionation)
       console.log(`Definindo o destino pelo Context. Destino: ${Destination}`);
    }
 

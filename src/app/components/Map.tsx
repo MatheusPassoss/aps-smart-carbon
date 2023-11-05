@@ -39,6 +39,7 @@ export const MapTest = () => {
   const { Origin, Destination } = useContext(MapContext)
 
 
+
   const [distance, setDistance] = useState<String | null>()
   const [time, setTime] = useState<String | null>()
 
@@ -58,36 +59,41 @@ export const MapTest = () => {
     travelMode: google.maps.TravelMode.DRIVING
   };
 
-  useEffect(() => {
-    params.destinations = Destination;
-    params.origins = Origin;
-  }, [Origin, Destination])
- 
+
+  // useEffect(() => {
+  //   params.destinations = Destination;
+  //   params.origins = Origin;
+  // }, [Origin, Destination])
 
 
 
-  function CaclRoute(params: any) {
 
-    console.log(`A origem é ${Origin}`)
+  function CaclRoute() {
 
-
-    console.log(params)
 
     if (mapRef.current) {
 
-      directionsService.route(params, function (result, status) {
+      directionsService.route({
+        origin: Origin,
+        destination: Destination,
+        travelMode: google.maps.TravelMode.DRIVING
+      }, function (result, status) {
         if (status == 'OK') {
           directionsRenderer.setDirections(result);
         }
       });
 
-      service.getDistanceMatrix(params, function (result, status) {
-        if (status == 'OK') {
-          console.log(result);
-          setDistance(result?.rows[0].elements[0].distance?.text);
-          setTime(result?.rows[0].elements[0].duration?.text);
-        }
-      })
+      service.getDistanceMatrix({
+        origins: [Origin],
+        destinations: [Destination],
+        travelMode: google.maps.TravelMode.DRIVING
+      }, function (result, status) {
+          if (status == 'OK') {
+            console.log(result);
+            setDistance(result?.rows[0].elements[0].distance?.text);
+            setTime(result?.rows[0].elements[0].duration?.text);
+          }
+        })
     }
 
   }
@@ -99,13 +105,13 @@ export const MapTest = () => {
       directionsRenderer.setMap(map);
     }
 
-  });
+  }, []);
 
   return (
     <section className="min-h-[100vh] flex flex-col relative">
       <MapNav />
       <div className='py-5'>
-        <Button Title={"Traçar rota"} onClick={() => { CaclRoute(params) }} />
+        <Button Title={"Traçar rota"} onClick={() => { CaclRoute() }} />
       </div>
       <figure ref={mapRef} className="min-h-screen" ></figure>
     </section>

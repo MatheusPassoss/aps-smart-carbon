@@ -2,7 +2,7 @@
 'use client'
 import { Bus, CarProfile, PersonSimpleBike } from './Phospor'
 import { MapContext } from "@/app/context/MapContext";
-import { useContext, useRef } from 'react';
+import { useContext, useRef, useState } from 'react';
 import Image from 'next/image';
 import { Autocomplete } from '@react-google-maps/api';
 import { Input } from './Input';
@@ -14,18 +14,18 @@ export const MapNav = () => {
     const originRef = useRef<HTMLInputElement>(null)
     const destinationRef = useRef<HTMLInputElement>(null)
 
+    const test = useState("")
 
-    const changeOrigin = () => {
-        if (originRef.current) {
-            defineOrigin(originRef.current.value)
-            console.log(`No MAP NAV A ORIGEM É ${originRef.current.value}`)
+
+    const changeOrigin = (place: any) => {
+        if (place) {
+            defineOrigin(place)
         }
     }
 
-    const changeDestiny = () => {
-        if (destinationRef.current) {
-            defineDestination(destinationRef.current.value)
-            console.log(`No MAP NAV O DESTINO É ${destinationRef.current.value}`)
+    const changeDestiny = (place: any) => {
+        if (place) {
+            defineDestination(place)
         }
     }
 
@@ -49,12 +49,12 @@ export const MapNav = () => {
                     </button>
                 </fieldset>
                 <label className="py-2 text-white">Origem</label>
-                <Autocomplete className='w-full'>
-                    <Input ref={originRef} onChange={changeOrigin}/>
+                <Autocomplete className='w-full' onPlaceChanged={() => {changeOrigin(originRef.current?.value)}}>
+                    <Input ref={originRef} />
                 </Autocomplete>
                 <label className="py-2 text-white">Destino</label>
-                <Autocomplete className='w-full'>
-                    <Input ref={destinationRef} onChange={changeDestiny} />
+                <Autocomplete className='w-full'  onPlaceChanged={() => {changeDestiny(destinationRef.current?.value)}}>
+                    <Input ref={destinationRef} />
                 </Autocomplete>
 
             </div>
