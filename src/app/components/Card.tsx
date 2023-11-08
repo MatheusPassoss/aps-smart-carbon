@@ -8,9 +8,9 @@ interface CardProps {
     imgAlt: string
     title: String
     subtitle01: String
-    content01: String
+    content01: string
     subtitle02: String
-    content02: String
+    content02: string
 
     Icon?: React.FC<IconProps>
 
@@ -35,11 +35,11 @@ export const Card = ({ content02, subtitle02, content01, imgAlt, imgHeight, imgW
             <ul className="pt-5 flex flex-col gap-2">
                 <li className="flex gap-2">
                     <h5 className="font-semibold">{subtitle01}</h5>
-                    <p>{content01}</p>
+                    <p>{`${content01}`}</p>
                 </li>
                 <li className="flex gap-2">
                     <h5 className="font-semibold">{subtitle02}</h5>
-                    <p>{content02}</p>
+                    <p>{`${content02}`}</p>
                 </li>
             </ul>
         </article>

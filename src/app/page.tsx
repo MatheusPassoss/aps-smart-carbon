@@ -44,11 +44,11 @@ export default function Home() {
         </aside>
       </section>
 
-      <section className="container text-black-custom m-auto flex flex-col gap-10 py-10 px-3">
+      <section className="container text-black-custom m-auto flex flex-col items-center gap-10 py-10 px-3">
 
         <aside className="flex">
           <div>
-            <h2 className="text-2xl font-semibold md:text-3xl">Como funciona a emissão</h2>
+            <h2 className="text-2xl font-semibold md:text-3xl">Como funciona o cálculo por rota?</h2>
             <p className="text-lg py-5 max-w-5xl">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum feugiat urna eu odio malesuada, vel finibus libero facilisis. Curabitur in malesuada nisi. Proin posuere tincidunt est, non commodo quam laoreet ut. Sed euismod elit eu massa dapibus, ut fringilla metus euismod. Sed tincidunt venenatis justo ut vulputate. Sed sit amet neque ut sem vestibulum condimentum. Nunc vel lacus a elit lacinia fringilla. Vivamus ut diam eu urna tempor laoreet</p>
           </div>
           <figure>
@@ -57,7 +57,7 @@ export default function Home() {
         </aside>
 
         <aside>
-          <h2 className="text-2xl font-semibold md:text-3xl ">Como funciona a emissão</h2>
+          <h2 className="text-2xl font-semibold md:text-3xl ">Como funciona o calculo por veículo</h2>
 
           <p className="text-lg py-5 max-w-5xl">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum feugiat urna eu odio malesuada, vel finibus libero facilisis. Curabitur in malesuada nisi. Proin posuere tincidunt est, non commodo quam laoreet ut. Sed euismod elit eu massa dapibus, ut fringilla metus euismod. Sed tincidunt venenatis justo ut vulputate. Sed sit amet neque ut sem vestibulum condimentum. Nunc vel lacus a elit lacinia fringilla. Vivamus ut diam eu urna tempor laoreet</p>
         </aside>
@@ -79,7 +79,7 @@ export default function Home() {
         </aside>
       </section>
 
-      <section className="min-h-screen">
+      {/* <section className="min-h-screen">
         <aside className="container m-auto px-3 pt-5">
           <VehiclesNav />
           <VehiclesInfo />
@@ -89,7 +89,7 @@ export default function Home() {
           <h2 className="text-2xl text-black-custom font-bold">O que seria necessário para repor o impacto?</h2>
           <VehiclesImpact />
         </aside>
-      </section>
+      </section> */}
     </>
   )
 }

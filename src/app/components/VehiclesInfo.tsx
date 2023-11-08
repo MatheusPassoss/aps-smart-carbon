@@ -1,7 +1,40 @@
 'use client'
-import { Bus } from "@phosphor-icons/react"
+import { Bus, Car, Bicycle } from "@phosphor-icons/react"
 import { Card } from "./Card"
+import { useContext } from "react"
+import { MapContext } from "../context/MapContext"
 export const VehiclesInfo = () => {
+
+    const { NumberDistance, NumberTime, isBike, isBus, isCar, VehicleResult } = useContext(MapContext)
+
+    const setVehicleResult = () => {
+
+        if (VehicleResult == "bus") return Bus;
+        if (VehicleResult == "car") return Car;
+        if (VehicleResult == "bike") return Bus;
+
+        return setVehicle()
+    }
+
+    const setVehicle = () => {
+
+
+        if (isBike) {
+            return Bicycle
+        }
+
+        if (isBus) {
+            return Bus
+        }
+
+        if (isCar) {
+            return Car
+        }
+
+        return Car
+    }
+
+    
 
 
     return (
@@ -9,16 +42,16 @@ export const VehiclesInfo = () => {
             <aside className="py-5 w-full md:px-3 flex justify-center items-center">
                 <Card
                     imgAlt=""
-                    
-                    Icon={Bus}
 
-                    title={"Carbono emitido"}
+                    Icon={setVehicleResult()}
 
-                    subtitle01={"Emissão por KM:"}
-                    content01={"teste3"}
+                    title={"Distância e tempo"}
 
-                    subtitle02={"Total em gramas"}
-                    content02={"teste4"}
+                    subtitle01={"Distância em KM:"}
+                    content01={`${NumberDistance}`}
+
+                    subtitle02={"Tempo total:"}
+                    content02={`${NumberTime}`}
                 />
             </aside>
             <aside className="py-5 w-full md:px-3 flex justify-center items-center">
@@ -31,10 +64,10 @@ export const VehiclesInfo = () => {
                     title={"Carbono emitido"}
 
                     subtitle01={"Emissão por KM:"}
-                    content01={"teste3"}
+                    content01={""}
 
                     subtitle02={"Total em gramas"}
-                    content02={"teste4"}
+                    content02={""}
                 />
             </aside>
         </section>

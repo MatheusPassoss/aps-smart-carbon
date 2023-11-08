@@ -13,10 +13,25 @@ export const MapProvider = ({ children }: MapProviderProps) => {
    const [Origin, setOrigin] = useState<string>("")
    const [Destination, setDestination] = useState<string>("")
 
+   const [textDistance, setTextDistance] = useState<String>("")
+   const [textTime, setTextTime] = useState<String>("")
+
+   const [NumberDistance, setNumberDistance] = useState<Number>(0)
+   const [NumberTime, setNumberTime] = useState<Number>(0)
+
+
+   const [VehicleResult, setVehicleResult] = useState<string>("")
+
+
+
+
 
    const [isCar, setCar] = useState<Boolean>(false)
    const [isBus, setBus] = useState<Boolean>(false)
    const [isBike, setBike] = useState<Boolean>(false)
+
+
+
 
 
    const defineModeDrive = (driveMod: String): void => {
@@ -31,16 +46,34 @@ export const MapProvider = ({ children }: MapProviderProps) => {
 
    const defineOrigin = (origin: string) => {
       setOrigin(origin)
-      console.log(`Definindo a Origem pelo Context. Destino: ${Origin}`);
    }
 
    const defineDestination = (destionation: string) => {
       setDestination(destionation)
-      console.log(`Definindo o destino pelo Context. Destino: ${Destination}`);
    }
 
+   const setResults = (TextDistance: string, TextTime: string, VehicleResult: string, NumberDistance: number, NumberTime: number) => {
+      if (TextDistance != "" && TextTime != "" && VehicleResult != "" && NumberDistance != null && NumberTime != null) {
+         setTextDistance(TextDistance);
+         console.log("Iniciou o setResults")
+
+
+         setTextTime(TextTime);
+         setNumberDistance(NumberDistance);
+         setNumberTime(NumberTime);
+
+         console.log(VehicleResult)
+         if (VehicleResult == "bus") setVehicleResult("bus");
+         if (VehicleResult == "car") setVehicleResult("car");
+         if (VehicleResult == "bike") setVehicleResult("bike");
+         console.log(VehicleResult)
+      }
+   }
+
+
+
    return (
-      <MapContext.Provider value={{defineModeDrive, defineOrigin, defineDestination, isCar, isBike, isBus, Origin, Destination, }}>
+      <MapContext.Provider value={{ setResults, VehicleResult, textDistance, textTime, NumberDistance, NumberTime, defineModeDrive, defineOrigin, defineDestination, isCar, isBike, isBus, Origin, Destination, }}>
          {children}
       </MapContext.Provider>
    )
