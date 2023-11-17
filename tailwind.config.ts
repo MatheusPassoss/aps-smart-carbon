@@ -11,6 +11,7 @@ const config: Config = {
       backgroundColor: {
         'black-custom': '#1E1E1E',
         'green-custom': '#27AE6F',
+        'gray-custom': '#F3F4F6',
         'default': '#F0E5D7'
       },
       textColor: {
@@ -18,6 +19,9 @@ const config: Config = {
       },
       screens: {
         'small-notbook': '992px'
+      },
+      borderColor: {
+        'black-custom': '#1E1E1E',
       }
     },
   },

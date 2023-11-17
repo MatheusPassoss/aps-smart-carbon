@@ -22,7 +22,11 @@ export const MapProvider = ({ children }: MapProviderProps) => {
 
    const [VehicleResult, setVehicleResult] = useState<string>("")
 
-
+   
+   const [totalEmission, setTotalEmission] = useState<string>("")
+   
+   const [emissionKm, setEmission] = useState<string>("")
+   
 
 
 
@@ -52,15 +56,12 @@ export const MapProvider = ({ children }: MapProviderProps) => {
       setDestination(destionation)
    }
 
-   const setResults = (TextDistance: string, TextTime: string, VehicleResult: string, NumberDistance: number, NumberTime: number) => {
-      if (TextDistance != "" && TextTime != "" && VehicleResult != "" && NumberDistance != null && NumberTime != null) {
-         setTextDistance(TextDistance);
-         console.log("Iniciou o setResults")
-
-
+   const setResults = (TextDistance: string, TextTime: string, VehicleResult: string, emissionKm: string, totalEmission: string) => {
+      if (TextDistance != "" && TextTime != "" && VehicleResult != "" && emissionKm != null && totalEmission != null) {
+         setTextDistance(TextDistance)
          setTextTime(TextTime);
-         setNumberDistance(NumberDistance);
-         setNumberTime(NumberTime);
+         setEmission(emissionKm);
+         setTotalEmission(totalEmission);
 
          console.log(VehicleResult)
          if (VehicleResult == "bus") setVehicleResult("bus");
@@ -73,7 +74,7 @@ export const MapProvider = ({ children }: MapProviderProps) => {
 
 
    return (
-      <MapContext.Provider value={{ setResults, VehicleResult, textDistance, textTime, NumberDistance, NumberTime, defineModeDrive, defineOrigin, defineDestination, isCar, isBike, isBus, Origin, Destination, }}>
+      <MapContext.Provider value={{ setResults, emissionKm, totalEmission, VehicleResult, textDistance, textTime, NumberDistance, NumberTime, defineModeDrive, defineOrigin, defineDestination, isCar, isBike, isBus, Origin, Destination, }}>
          {children}
       </MapContext.Provider>
    )

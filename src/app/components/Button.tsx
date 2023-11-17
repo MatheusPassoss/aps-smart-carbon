@@ -1,7 +1,8 @@
+import { table } from "console";
 import React, { forwardRef, ForwardedRef, ReactElement, Ref, ButtonHTMLAttributes } from "react";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-    Title: string,
+  Title: string,
 }
 
 export const Button = forwardRef(
@@ -16,4 +17,4 @@ export const Button = forwardRef(
 
 Button.displayName = "Button";
 
- 
+

@@ -5,13 +5,14 @@ import { useLoadScript } from "@react-google-maps/api";
 import { MapContext } from "@/app/context/MapContext";
 import { MapNav } from "./MapNav";
 import { Button } from "./Button";
+import { Ilustration } from "../animations/Ilustration";
 
 export const Map = () => {
   const GoogleApiKey = process.env.REACT_APP_GOOGLE_KEY;
 
-  if (!GoogleApiKey) {
-    return "Chave de API está indefinida ou não pode ser acessada.";
-  }
+  // if (!GoogleApiKey) {
+  //   return "Chave de API está indefinida ou não pode ser acessada.";
+  // }
 
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: "AIzaSyDxZ5VdV_iZ74LcmbnkxF-ekP89bp4iaPg",
@@ -85,6 +86,13 @@ export const MapTest = () => {
   }
 
 
+  function testeCesar() {
+
+  }
+
+
+
+
   async function CaclRoute() {
 
 
@@ -124,15 +132,15 @@ export const MapTest = () => {
           if (status == 'OK') {
 
             console.log(result);
-            let TextDistance = result?.rows[0].elements[0].distance?.text;
-            let TextTime = result?.rows[0].elements[0].duration?.text;
-            let NumberDistance = result?.rows[0].elements[0].distance?.value;
-            let NumberTime = result?.rows[0].elements[0].duration?.value;
-
-
-
+            const TextDistance = result?.rows[0].elements[0].distance?.text;
+            const TextTime = result?.rows[0].elements[0].duration?.text;
+            const NumberDistance = result?.rows[0].elements[0].distance?.value;
+            const NumberTime = result?.rows[0].elements[0].duration?.value;
 
             try {
+
+              console.log("Chamou o Fetch")
+
               fetch("https://e09fwv0dl9.execute-api.us-east-1.amazonaws.com/test", {
                 method: "POST",
                 headers: {
@@ -152,16 +160,12 @@ export const MapTest = () => {
                   console.log(data)
 
                   const VehicleResult = data.vehicle
+                  const emissionKm = data.emissionKm
+                  const totalEmission = data.totalEmission
 
                   if (TextDistance && TextTime && VehicleResult && NumberDistance && NumberTime) {
 
-
-
-
-                    setResults(TextDistance, TextTime, VehicleResult, NumberDistance, NumberTime);
-
-
-
+                    setResults(TextDistance, TextTime, VehicleResult, emissionKm, totalEmission);
                   }
 
 
@@ -194,12 +198,23 @@ export const MapTest = () => {
   }, []);
 
   return (
-    <section className="min-h-[100vh] flex flex-col relative">
-      <MapNav />
-      <div className='m-auto w-full py-5 max-w-4xl'>
+    <section className="min-h-[100vh] flex flex-col gap-10 relative max-lg:-skew-y-3">
+      <aside className="flex justify-center lg:py-8 xl:items-center px-3">
+        <div className='w-full lg:max-w-4xl lg:px-3 lg:max-xl:m-auto '>
+          <MapNav />
+          <aside className="px-3 py-5 max-lg:hidden">
+            <Button Title={"Traçar rota"} onClick={() => { ValidationDataOfRequest() }} ref={buttonRef} />
+          </aside>
+        </div>
+        <figure className="max-lg:hidden lg:flex lg:justify-end lg:items-center">
+          <Ilustration person="aleff" typeAnimation="fromTheBotton" />
+        </figure>
+      </aside>
+      <figure ref={mapRef} className="min-h-[65vh] xl:min-[75vh]:" />
+      <aside className="px-3 flex flex-col items-center gap-8 lg:hidden ">
         <Button Title={"Traçar rota"} onClick={() => { ValidationDataOfRequest() }} ref={buttonRef} />
-      </div>
-      <figure ref={mapRef} className="min-h-screen" />
+        <Ilustration person="aleff" typeAnimation="fromTheBotton" />
+      </aside>
     </section>
   );
 };

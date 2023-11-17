@@ -3,9 +3,13 @@ import { Bus, Car, Bicycle } from "@phosphor-icons/react"
 import { Card } from "./Card"
 import { useContext } from "react"
 import { MapContext } from "../context/MapContext"
+import { motion } from "framer-motion"
+import { fromTheLeft, fromTheRight } from "../animations/data"
+ 
+
 export const VehiclesInfo = () => {
 
-    const { NumberDistance, NumberTime, isBike, isBus, isCar, VehicleResult } = useContext(MapContext)
+    const { textTime, textDistance, isBike, isBus, isCar, VehicleResult, emissionKm, totalEmission } = useContext(MapContext)
 
     const setVehicleResult = () => {
 
@@ -18,58 +22,57 @@ export const VehiclesInfo = () => {
 
     const setVehicle = () => {
 
-
-        if (isBike) {
-            return Bicycle
-        }
-
-        if (isBus) {
-            return Bus
-        }
-
-        if (isCar) {
-            return Car
-        }
+        if (isBike) return Bicycle;
+        if (isBus) return Bus;
+        if (isCar) return Car;
 
         return Car
     }
 
-    
+    const setWorldIcon = () => {
+
+        if (totalEmission == "0")
+            return "/assets/ilustration/happyplanet.svg"
+
+        return "/assets/ilustration/sadplanet.svg"
+    }
+
+
 
 
     return (
-        <section className="md:flex md:flex-row md:justify-between lg:justify-center lg:gap-8">
-            <aside className="py-5 w-full md:px-3 flex justify-center items-center">
+        <section className="md:flex md:flex-row md:justify-between lg:justify-center lg:gap-8 overflow-hidden">
+            <motion.aside
+                {...fromTheLeft}
+                className="py-5 w-full md:px-3 flex justify-center items-center">
                 <Card
-                    imgAlt=""
-
+                    type="image"
                     Icon={setVehicleResult()}
 
                     title={"Distância e tempo"}
 
                     subtitle01={"Distância em KM:"}
-                    content01={`${NumberDistance}`}
+                    content01={`${textDistance}`}
 
                     subtitle02={"Tempo total:"}
-                    content02={`${NumberTime}`}
+                    content02={`${textTime}`}
                 />
-            </aside>
-            <aside className="py-5 w-full md:px-3 flex justify-center items-center">
+            </motion.aside>
+            <motion.aside
+                {...fromTheRight}
+                className="py-5 w-full md:px-3 flex justify-center items-center">
                 <Card
-                    imgAlt="a"
-                    imgHeight={85}
-                    imgWidth={90}
-                    imgSrc="/assets/ilustration/sadplanet.svg"
 
+                    type="image"
                     title={"Carbono emitido"}
 
                     subtitle01={"Emissão por KM:"}
-                    content01={""}
+                    content01={`${emissionKm}`}
 
                     subtitle02={"Total em gramas"}
-                    content02={""}
+                    content02={`${totalEmission}`}
                 />
-            </aside>
+            </motion.aside>
         </section>
     )
 }

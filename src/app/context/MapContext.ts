@@ -6,7 +6,7 @@ interface MapValues {
     defineModeDrive: (driveMod: String) => void,
     defineOrigin: (origin: string) => void,
     defineDestination: (destination: string) => void,
-    setResults: (TextDistance: string, TextTime: string, VehicleResult: string, NumberDistance: number, NumberTime: number) => void,
+    setResults: (TextDistance: string, TextTime: string, VehicleResult: string, emission: string, totalEmission: string) => void,
     isCar: Boolean,
     isBus: Boolean,
     isBike: Boolean,
@@ -17,6 +17,8 @@ interface MapValues {
     NumberTime: Number,
     Origin: string,
     Destination: string,
+    emissionKm: string
+    totalEmission: string
 }
 
 
