@@ -20,15 +20,15 @@ export const Article = () => {
 
             <motion.aside className="flex"  {...fromTheLeft}>
                 <figure>
-                    <h4 className="flex items-center gap-2 font-bold text-lg"><Bus size={40} weight="fill" /> Carros</h4>
+                    <h4 className="flex items-center gap-2 font-bold text-lg"><Bus size={40} weight="fill" /> Ônibus</h4>
                     <p className="text-lg py-5 max-w-5xl">
-                        Para ônibus movidos a diesel, vamos assumir que eles emitem uma média de 2,5 kg de dióxido de carbono (CO₂) por litro de combustível. No entanto, é importante notar que os ônibus podem carregar um grande número de passageiros. Por exemplo, um "miniônibus" da SPTrans pode transportar mais de 34 passageiros, conforme o manual de novembro de 2021. Neste projeto, vamos considerar que os ônibus sempre têm 30 passageiros e consomem, em média, 3 quilômetros por litro de diesel.</p>
+                        Para ônibus movidos a diesel, vamos assumir que eles emitem uma média de 2,5 kg de dióxido de carbono (CO₂) por litro de combustível. No entanto, é importante notar que os ônibus podem carregar um grande número de passageiros. Por exemplo, um {`"miniônibus"`} da SPTrans pode transportar mais de 34 passageiros, conforme o manual de novembro de 2021. Neste projeto, vamos considerar que os ônibus sempre têm 30 passageiros e consomem, em média, 3 quilômetros por litro de diesel.</p>
                 </figure>
             </motion.aside>
 
             <motion.aside className="flex"  {...fromTheLeft}>
                 <figure>
-                    <h4 className="flex items-center gap-2 font-bold text-lg"><Bicycle size={40} weight="fill" /> Bicicleta</h4>
+                    <h4 className="flex items-center gap-2 font-bold text-lg"><Bicycle size={40} weight="fill" /> Bicicletas</h4>
                     <p className="text-lg py-5 max-w-5xl">As bicicletas não emitem carbono (<i>mas você sim, cuidado com o que comer quando for pedalar...</i>)</p>
                 </figure>
             </motion.aside>

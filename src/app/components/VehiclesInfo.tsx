@@ -52,10 +52,10 @@ export const VehiclesInfo = () => {
                     title={"Distância e tempo"}
 
                     subtitle01={"Distância em KM:"}
-                    content01={`${textDistance}`}
+                    content01={`${textDistance || "0"}`}
 
                     subtitle02={"Tempo total:"}
-                    content02={`${textTime}`}
+                    content02={`${textTime || "0"}`}
                 />
             </motion.aside>
             <motion.aside
@@ -67,10 +67,10 @@ export const VehiclesInfo = () => {
                     title={"Carbono emitido"}
 
                     subtitle01={"Emissão por KM:"}
-                    content01={`${emissionKm}`}
+                    content01={`${emissionKm  || "0"}`}
 
                     subtitle02={"Total em gramas"}
-                    content02={`${totalEmission}`}
+                    content02={`${totalEmission  || "0"}`}
                 />
             </motion.aside>
         </section>

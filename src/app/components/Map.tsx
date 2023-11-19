@@ -193,6 +193,8 @@ export const MapTest = () => {
     if (mapRef.current) {
       let map = new google.maps.Map(mapRef.current, mapOptions);
       directionsRenderer.setMap(map);
+
+    
     }
 
   }, []);
@@ -212,7 +214,7 @@ export const MapTest = () => {
       </aside>
       <figure ref={mapRef} className="min-h-[65vh] xl:min-[75vh]:" />
       <aside className="px-3 flex flex-col items-center gap-8 lg:hidden ">
-        <Button Title={"Traçar rota"} onClick={() => { ValidationDataOfRequest() }} ref={buttonRef} />
+        <Button Title={"Traçar rota"} onClick={() => { ValidationDataOfRequest() }} ref={buttonRef} disabled />
         <Ilustration person="aleff" typeAnimation="fromTheBotton" />
       </aside>
     </section>
