@@ -69,28 +69,36 @@ export const MapTest = () => {
 
   }, [isBike, isBus, isCar])
 
+  useEffect(() => {
+
+
+    if (!Origin || !Destination) {
+      if (buttonRef.current) buttonRef.current.disabled = true
+    }
+
+  }, [Origin, Destination])
+
+
+
+
+
 
   function ValidationDataOfRequest() {
 
     if (!driveMode) {
-      console.log('Meio de transporte não selecionado')
+      alert('Meio de transporte não selecionado')
       return null
     }
 
     if (!Origin || !Destination) {
-      console.log('Origem ou destino vazios')
+      alert('Origem ou destino vazios')
       return null
 
     }
+
+
     return CaclRoute()
   }
-
-
-  function testeCesar() {
-
-  }
-
-
 
 
   async function CaclRoute() {
@@ -130,6 +138,8 @@ export const MapTest = () => {
         function (result, status) {
 
           if (status == 'OK') {
+
+
 
             console.log(result);
             const TextDistance = result?.rows[0].elements[0].distance?.text;
@@ -194,7 +204,7 @@ export const MapTest = () => {
       let map = new google.maps.Map(mapRef.current, mapOptions);
       directionsRenderer.setMap(map);
 
-    
+
     }
 
   }, []);
@@ -214,7 +224,7 @@ export const MapTest = () => {
       </aside>
       <figure ref={mapRef} className="min-h-[65vh] xl:min-[75vh]:" />
       <aside className="px-3 flex flex-col items-center gap-8 lg:hidden ">
-        <Button Title={"Traçar rota"} onClick={() => { ValidationDataOfRequest() }} ref={buttonRef} disabled />
+        <Button Title={"Traçar rota"} onClick={() => { ValidationDataOfRequest() }} ref={buttonRef} />
         <Ilustration person="aleff" typeAnimation="fromTheBotton" />
       </aside>
     </section>
