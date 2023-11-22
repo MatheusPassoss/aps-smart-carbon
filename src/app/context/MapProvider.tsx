@@ -1,13 +1,46 @@
 'use client'
 
-import { useState } from "react"
+import { useState, useEffect, useRef } from "react"
 import { MapContext } from "./MapContext"
+import { useApi } from "../hooks/useApi"
 
 interface MapProviderProps {
    children: React.ReactNode
 }
 
 export const MapProvider = ({ children }: MapProviderProps) => {
+
+
+   const centeredOnUnip = {
+      lat: -23.632608446295116,
+      lng: -46.69668773214834,
+   };
+
+   const mapOptions = {
+      zoom: 15,
+      center: centeredOnUnip,
+   };
+
+   const mapRef = useRef<HTMLDivElement>(null);
+   const { directionsRenderer } = useApi()
+
+   useEffect(() => {
+
+      if (mapRef.current && directionsRenderer) {
+         let map = new google.maps.Map(mapRef.current, mapOptions);
+         directionsRenderer.setMap(map);
+
+      }
+   }, []);
+
+
+
+
+
+
+
+
+
 
 
    const [Origin, setOrigin] = useState<string>("")
@@ -22,11 +55,11 @@ export const MapProvider = ({ children }: MapProviderProps) => {
 
    const [VehicleResult, setVehicleResult] = useState<string>("")
 
-   
+
    const [totalEmission, setTotalEmission] = useState<string>("")
-   
+
    const [emissionKm, setEmission] = useState<string>("")
-   
+
 
 
 
@@ -74,7 +107,7 @@ export const MapProvider = ({ children }: MapProviderProps) => {
 
 
    return (
-      <MapContext.Provider value={{ setResults, emissionKm, totalEmission, VehicleResult, textDistance, textTime, NumberDistance, NumberTime, defineModeDrive, defineOrigin, defineDestination, isCar, isBike, isBus, Origin, Destination, }}>
+      <MapContext.Provider value={{ mapRef, setResults, emissionKm, totalEmission, VehicleResult, textDistance, textTime, NumberDistance, NumberTime, defineModeDrive, defineOrigin, defineDestination, isCar, isBike, isBus, Origin, Destination, }}>
          {children}
       </MapContext.Provider>
    )

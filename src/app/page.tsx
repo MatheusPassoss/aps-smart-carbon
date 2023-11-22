@@ -2,7 +2,6 @@ import { Button } from "./components/Button"
 import { Map } from "./components/Map"
 import { VehiclesInfo } from "./components/VehiclesInfo"
 import { VehiclesImpact } from "./components/VehiclesImpact"
-import { Florest } from "./animations/Florest"
 import { Article } from "./animations/Article"
 import { Ilustration } from "./animations/Ilustration"
 

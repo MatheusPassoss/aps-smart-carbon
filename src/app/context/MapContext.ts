@@ -1,6 +1,7 @@
 'use client'
 
 import { createContext } from "react"
+import { RefObject } from "react"
 
 interface MapValues {
     defineModeDrive: (driveMod: String) => void,
@@ -19,6 +20,7 @@ interface MapValues {
     Destination: string,
     emissionKm: string
     totalEmission: string
+    mapRef: RefObject<HTMLDivElement>
 }
 
 
