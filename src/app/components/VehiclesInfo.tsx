@@ -5,30 +5,16 @@ import { useContext } from "react"
 import { MapContext } from "../context/MapContext"
 import { motion } from "framer-motion"
 import { fromTheLeft, fromTheRight } from "../animations/data"
- 
+import { useResults } from "../hooks/useResults"
+
 
 export const VehiclesInfo = () => {
 
-    const { textTime, textDistance, isBike, isBus, isCar, VehicleResult, emissionKm, totalEmission } = useContext(MapContext)
+    const { emissionKm, totalEmission } = useContext(MapContext)
+    var TextDistance = 0
+    var TextTime = 0
 
-    const setVehicleResult = () => {
-
-        if (VehicleResult == "bus") return Bus;
-        if (VehicleResult == "car") return Car;
-        if (VehicleResult == "bike") return Bus;
-
-        return setVehicle()
-    }
-
-    const setVehicle = () => {
-
-        if (isBike) return Bicycle;
-        if (isBus) return Bus;
-        if (isCar) return Car;
-
-        return Car
-    }
-
+ 
     const setWorldIcon = () => {
 
         if (totalEmission == "0")
@@ -47,15 +33,15 @@ export const VehiclesInfo = () => {
                 className="py-5 w-full md:px-3 flex justify-center items-center">
                 <Card
                     type="image"
-                    Icon={setVehicleResult()}
+                    // Icon={ }
 
                     title={"Distância e tempo"}
 
                     subtitle01={"Distância em KM:"}
-                    content01={`${textDistance || "0"}`}
+                    content01={`${TextDistance || "0"}`}
 
                     subtitle02={"Tempo total:"}
-                    content02={`${textTime || "0"}`}
+                    content02={`${TextTime || "0"}`}
                 />
             </motion.aside>
             <motion.aside
@@ -67,10 +53,10 @@ export const VehiclesInfo = () => {
                     title={"Carbono emitido"}
 
                     subtitle01={"Emissão por KM:"}
-                    content01={`${emissionKm  || "0"}`}
+                    content01={`${emissionKm || "0"}`}
 
                     subtitle02={"Total em gramas"}
-                    content02={`${totalEmission  || "0"}`}
+                    content02={`${totalEmission || "0"}`}
                 />
             </motion.aside>
         </section>

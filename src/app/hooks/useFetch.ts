@@ -1,4 +1,3 @@
-
 export const useFetch = async (NumberDistance: number, NumberTime: number, vehicle: string) => {
 
     try {

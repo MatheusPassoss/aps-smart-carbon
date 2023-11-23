@@ -1,4 +1,3 @@
-
 import { useLoadScript } from "@react-google-maps/api";
 
 export const useApi = () => {
@@ -6,7 +5,6 @@ export const useApi = () => {
         googleMapsApiKey: "AIzaSyDxZ5VdV_iZ74LcmbnkxF-ekP89bp4iaPg",
         libraries: ['places']
     });
-
 
     let directionsService: google.maps.DirectionsService | undefined;
     let directionsRenderer: google.maps.DirectionsRenderer | undefined;
@@ -25,5 +23,3 @@ export const useApi = () => {
         service
     };
 };
-
-
