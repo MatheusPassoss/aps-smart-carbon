@@ -1,5 +1,5 @@
 'use client'
-import { Bus, Car, Bicycle } from "@phosphor-icons/react"
+import { Bus, Car, Bicycle, PersonSimpleWalk } from "@phosphor-icons/react"
 import { Card } from "./Card"
 import { useContext } from "react"
 import { MapContext } from "../context/MapContext"
@@ -8,7 +8,7 @@ import { fromTheLeft, fromTheRight } from "../animations/data"
 
 export const RouteInfo = () => {
 
-    const { vehicleSelected, vehicle, EmissionKm, TotalEmission, TextDistance, TextTime } = useContext(MapContext)
+    const { vehicleSelected, EmissionKm, TotalEmission, TextDistance, TextTime } = useContext(MapContext)
 
     const setIlustration = () => {
 
@@ -28,7 +28,7 @@ export const RouteInfo = () => {
             case 'BICYCLING':
                 return Bicycle
             case 'WALKING':
-                return Bicycle
+                return PersonSimpleWalk
         }
 
         return Car
