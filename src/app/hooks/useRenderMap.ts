@@ -8,7 +8,7 @@ export const useRenderMap = () => {
     
     
     const { LambdaCalculateEmission } = useFetch()
-    const {setTextDistance, setTextTime} = useContext(MapContext)
+    const {setTextDistance, setTextTime, setHasRoute} = useContext(MapContext)
 
     const { mapRef } = useContext(MapContext)
 
@@ -69,7 +69,7 @@ export const useRenderMap = () => {
                             const NumberTime = result?.rows[0].elements[0].duration?.value;
 
                             if (NumberDistance && NumberTime && distanceInText && timeInText) {
-                         
+                                setHasRoute(true)
                                 setTextDistance(distanceInText)
                                 setTextTime(timeInText)
                                 LambdaCalculateEmission(NumberDistance, NumberTime, vehicle)

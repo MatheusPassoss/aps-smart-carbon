@@ -17,6 +17,7 @@ export enum vehicleOpt {
 
 export const MapProvider = ({ children }: MapProviderProps) => {
 
+   const[hasRoute, setHasRoute] = useState<boolean>(false)
    const [vehicleSelected, setVehicleSelected] = useState<string>('car')
    const [EmissionKm, setEmissionKm] = useState<string>('0')
    const [TotalEmission, setTotalEmission] = useState<string>('0')
@@ -47,7 +48,7 @@ export const MapProvider = ({ children }: MapProviderProps) => {
    }, []);
 
    return (
-      <MapContext.Provider value={{ vehicle, setVehicle, mapRef, vehicleSelected, setVehicleSelected, EmissionKm, setEmissionKm, TotalEmission, setTotalEmission, TextDistance, setTextDistance, TextTime, setTextTime }}>
+      <MapContext.Provider value={{ vehicle, setVehicle, mapRef, vehicleSelected, setVehicleSelected, EmissionKm, setEmissionKm, TotalEmission, setTotalEmission, TextDistance, setTextDistance, TextTime, setTextTime, hasRoute, setHasRoute }}>
          {children}
       </MapContext.Provider>
    )

@@ -8,9 +8,10 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      backgroundColor: {
+      backgroundColor: { 
         'black-custom': '#1E1E1E',
         'green-custom': '#27AE6F',
+        'green-custom-strong': '#20975F',
         'gray-custom': '#F3F4F6',
         'default': '#F0E5D7'
       },

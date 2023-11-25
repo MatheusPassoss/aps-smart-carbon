@@ -18,6 +18,8 @@ interface MapValues {
     setTextDistance: Dispatch<SetStateAction<string>>
     TextTime: string
     setTextTime: Dispatch<SetStateAction<string>>
+    hasRoute: boolean
+    setHasRoute: Dispatch<SetStateAction<boolean>>
 }
 
 

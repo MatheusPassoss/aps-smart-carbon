@@ -1,6 +1,6 @@
 
 'use client'
-import { Bus, CarProfile, PersonSimpleBike, PersonSimpleWalk } from './Phospor'
+import { Bus, CarProfile, PersonSimpleBike, PersonSimpleWalk, ArrowCircleDown } from './Phospor'
 import { useRef, useContext } from 'react';
 import { Autocomplete } from '@react-google-maps/api';
 import { Input } from './Input';
@@ -10,12 +10,13 @@ import { Button } from './Button';
 import { MapContext } from '../context/MapContext';
 import { useRenderMap } from '../hooks/useRenderMap';
 import { vehicleOpt } from '../context/MapProvider';
+import Link from 'next/link';
 
 export const MapNav = () => {
 
     const originRef = useRef<HTMLInputElement>(null)
     const destinationRef = useRef<HTMLInputElement>(null)
-    const { vehicle, setVehicle } = useContext(MapContext)
+    const { vehicle, setVehicle, hasRoute } = useContext(MapContext)
 
     const { calculateRoute } = useRenderMap()
 
@@ -70,14 +71,16 @@ export const MapNav = () => {
                     <Input inputRef={originRef} />
                 </Autocomplete>
                 <label className="text-white">Destino</label>
-                <Autocomplete className='w-full pb-3 pt-1'>
+                <Autocomplete className='w-full pb-5 pt-1'>
                     <Input inputRef={destinationRef} />
                 </Autocomplete>
-                <div className='pt-5'>
-
-                    <Button Title={"Traçar rota"} onClick={() => { ValidationDataOfRequest() }} />
-                </div>
-
+                <table className={`w-full ${hasRoute && "flex flex-col gap-5 md:flex-row"}`}>
+                    <Button Title={"Traçar nova rota"} onClick={() => { ValidationDataOfRequest() }} />
+                    {hasRoute &&
+                   (<Link href={"#info"} className='w-full'>
+                        <Button Title={"Conferir informações"} RightIcon Icon={ArrowCircleDown}/>
+                    </Link>)}
+                </table>
             </aside>
         </aside>
     )
