@@ -61,11 +61,11 @@ export const MapNav = () => {
                     </fieldset>
                     <label className="py-2 text-white">Origem</label>
                     <Autocomplete className='w-full'>
-                        <Input ref={originRef} />
+                        <Input inputRef={originRef} />
                     </Autocomplete>
                     <label className="py-2 text-white">Destino</label>
                     <Autocomplete className='w-full'>
-                        <Input ref={destinationRef} />
+                        <Input inputRef={destinationRef} />
                     </Autocomplete>
                 </div>
                 <Button Title={"Traçar rota"} onClick={() => { ValidationDataOfRequest() }} />

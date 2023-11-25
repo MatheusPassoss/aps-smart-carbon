@@ -5,26 +5,34 @@ import { useContext } from "react"
 import { MapContext } from "../context/MapContext"
 import { motion } from "framer-motion"
 import { fromTheLeft, fromTheRight } from "../animations/data"
-import { useResults } from "../hooks/useResults"
-import { useFetch } from "../hooks/useFetch"
-import { useRenderMap } from "../hooks/useRenderMap"
 
+export const RouteInfo = () => {
 
-export const VehiclesInfo = () => {
+    const { vehicleSelected, vehicle, EmissionKm, TotalEmission, TextDistance, TextTime } = useContext(MapContext)
 
-    const {vehicleSelected, EmissionKm, TotalEmission, TextDistance, TextTime} = useContext(MapContext)
- 
+    const setIlustration = () => {
 
-
-    const setWorldIcon = () => {
-
-        if (TotalEmission == 0)
+        if (TotalEmission == "0")
             return "/assets/ilustration/happyplanet.svg"
 
         return "/assets/ilustration/sadplanet.svg"
     }
 
+    const setIcon = () => {
 
+        switch (vehicleSelected) {
+            case 'DRIVING':
+                return Car
+            case 'TRANSIT':
+                return Bus
+            case 'BICYCLING':
+                return Bicycle
+            case 'WALKING':
+                return Bicycle
+        }
+
+        return Car
+    }
 
 
     return (
@@ -33,9 +41,8 @@ export const VehiclesInfo = () => {
                 {...fromTheLeft}
                 className="py-5 w-full md:px-3 flex justify-center items-center">
                 <Card
-                    type="image"
-                    Icon={Car}
 
+                    icon={setIcon()}
                     title={"Distância e tempo"}
 
                     subtitle01={"Distância em KM:"}
@@ -49,15 +56,16 @@ export const VehiclesInfo = () => {
                 {...fromTheRight}
                 className="py-5 w-full md:px-3 flex justify-center items-center">
                 <Card
-
-                    type="image"
+                    icon={setIcon()}
+                    hasImage
+                    srcImg={setIlustration()}
                     title={"Carbono emitido"}
 
                     subtitle01={"Emissão por KM:"}
-                    content01={`${EmissionKm}`}
+                    content01={EmissionKm}
 
                     subtitle02={"Total em gramas"}
-                    content02={`${TotalEmission}`}
+                    content02={TotalEmission}
                 />
             </motion.aside>
         </section>

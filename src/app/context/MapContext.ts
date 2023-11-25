@@ -10,10 +10,10 @@ interface MapValues {
     mapRef: RefObject<HTMLDivElement>
     vehicleSelected: string
     setVehicleSelected: Dispatch<SetStateAction<string>>
-    EmissionKm: number
-    setEmissionKm: Dispatch<SetStateAction<number>>
-    TotalEmission: number
-    setTotalEmission: Dispatch<SetStateAction<number>>
+    EmissionKm: string
+    setEmissionKm: Dispatch<SetStateAction<string>>
+    TotalEmission: string
+    setTotalEmission: Dispatch<SetStateAction<string>>
     TextDistance: string
     setTextDistance: Dispatch<SetStateAction<string>>
     TextTime: string

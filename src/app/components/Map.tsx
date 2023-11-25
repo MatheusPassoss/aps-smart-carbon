@@ -5,6 +5,7 @@ import { Ilustration } from "../animations/Ilustration";
 import { useRenderMap } from "../hooks/useRenderMap";
 
 export const Map = () => {
+ 
   const { isLoaded } = useApi();
   const { mapRef } = useRenderMap()
 

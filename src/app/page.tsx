@@ -1,7 +1,7 @@
 import { Button } from "./components/Button"
 import { Map } from "./components/Map"
-import { VehiclesInfo } from "./components/VehiclesInfo"
-import { VehiclesImpact } from "./components/VehiclesImpact"
+import { RouteInfo } from "./components/RouteInfo"
+import { RouteImpact } from "./components/RouteImpact"
 import { Article } from "./animations/Article"
 import { Ilustration } from "./animations/Ilustration"
 
@@ -9,7 +9,6 @@ import { Ilustration } from "./animations/Ilustration"
 export default function Home() {
   return (
     <>
-
 
       <main className="max-md:min-h-screen md:min-h-[70vh] container m-auto flex flex-wrap items-center justify-center pt-20 pb-10 xl:flex-row xl:flex-nowrap xl:justify-evenly overflow-hidden">
         <aside className="px-3 py-5 pt-3 text-black-custom max-w-2xl min-[992px]:max-w-3xl  flex flex-col gap-5 md:py-10 xl:self-start xl:gap-10">
@@ -50,12 +49,12 @@ export default function Home() {
       <section className="min-h-screen bg-default">
         <aside className="container m-auto px-3 pt-20">
           <h2 className="text-2xl text-black-custom font-bold lg:pb-16">Confira as informações da sua rota</h2>
-          <VehiclesInfo />
+          <RouteInfo />
         </aside>
 
         <aside className="container m-auto px-3 pt-20">
           <h2 className="text-2xl text-black-custom font-bold">O que seria necessário para repor o impacto?</h2>
-          <VehiclesImpact />
+          <RouteImpact />
         </aside>
       </section>
 

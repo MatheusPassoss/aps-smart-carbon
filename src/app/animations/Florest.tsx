@@ -1,10 +1,9 @@
 'use client'
 import { motion } from "framer-motion"
 import Image from "next/image"
-import { fromTheLeft, fromTheRight, fromTheBotton } from "./data"
+import { fromTheLeft, fromTheRight} from "./data"
 
 export const Florest = () => {
-
 
     const florest = {
         initial: { opacity: 0.5, y: 100, scale: 0.5 },
@@ -13,11 +12,7 @@ export const Florest = () => {
         transition: { duration: 0.5, delay: 0.2 },
     }
 
-
-
-
     return (
-
 
         <figure className="px-1 overflow-hidden">
             <figure className="flex justify-between overflow-hidden">
@@ -32,7 +27,6 @@ export const Florest = () => {
                 <Image width={430} height={330} src={"/assets/ilustration/florestnoclouds.svg"} alt="Ilustração de uma floresta." />
             </motion.div>
         </figure>
-
 
     )
 }

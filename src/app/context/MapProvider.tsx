@@ -17,6 +17,16 @@ export enum vehicleOpt {
 
 export const MapProvider = ({ children }: MapProviderProps) => {
 
+   const [vehicleSelected, setVehicleSelected] = useState<string>('car')
+   const [EmissionKm, setEmissionKm] = useState<string>('0')
+   const [TotalEmission, setTotalEmission] = useState<string>('0')
+   const [TextDistance, setTextDistance] = useState<string>('0')
+   const [TextTime, setTextTime] = useState<string>('0')
+   const [vehicle, setVehicle] = useState<vehicleOpt>(vehicleOpt.DRIVING)
+   const mapRef = useRef<HTMLDivElement>(null);
+   const { directionsRenderer } = useApi()
+
+
    const centeredOnUnip = {
       lat: -23.632608446295116,
       lng: -46.69668773214834,
@@ -27,9 +37,6 @@ export const MapProvider = ({ children }: MapProviderProps) => {
       center: centeredOnUnip,
    };
 
-   const mapRef = useRef<HTMLDivElement>(null);
-   const { directionsRenderer } = useApi()
-
    useEffect(() => {
 
       if (mapRef.current && directionsRenderer) {
@@ -39,20 +46,8 @@ export const MapProvider = ({ children }: MapProviderProps) => {
       }
    }, []);
 
-   const [vehicleSelected, setVehicleSelected] = useState<string>('car')
-   const [EmissionKm, setEmissionKm] = useState<number>(0)
-   const [TotalEmission, setTotalEmission] = useState<number>(0)
-   const [TextDistance, setTextDistance] = useState<string>('0')
-   const [TextTime, setTextTime] = useState<string>('0')
-
-
- 
-
-
-   const [vehicle, setVehicle] = useState<vehicleOpt>(vehicleOpt.DRIVING)
-
    return (
-      <MapContext.Provider value={{ vehicle, setVehicle, mapRef, vehicleSelected, setVehicleSelected, EmissionKm, setEmissionKm, TotalEmission, setTotalEmission, TextDistance, setTextDistance, TextTime, setTextTime}}>
+      <MapContext.Provider value={{ vehicle, setVehicle, mapRef, vehicleSelected, setVehicleSelected, EmissionKm, setEmissionKm, TotalEmission, setTotalEmission, TextDistance, setTextDistance, TextTime, setTextTime }}>
          {children}
       </MapContext.Provider>
    )

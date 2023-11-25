@@ -2,7 +2,7 @@ import Image from "next/image"
 import { Florest } from "../animations/Florest"
 
 
-export const VehiclesImpact = () => {
+export const RouteImpact = () => {
 
 
     return (

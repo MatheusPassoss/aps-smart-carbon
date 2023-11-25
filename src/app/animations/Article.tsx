@@ -1,9 +1,7 @@
 'use client'
 
 import { motion } from "framer-motion"
-import Image from "next/image"
-import { fromTheBotton, fromTheLeft, fromTheRight } from "./data"
-import { Ilustration } from "./Ilustration"
+import {fromTheLeft} from "./data"
 import { Car, Bus, Bicycle } from "@phosphor-icons/react"
 
 export const Article = () => {

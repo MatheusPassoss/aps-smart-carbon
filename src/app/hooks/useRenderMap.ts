@@ -1,12 +1,14 @@
 import { MapContext } from "../context/MapContext";
 import { useApi } from "./useApi";
 import { useFetch } from "./useFetch";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect} from "react";
 import { vehicleOpt } from "../context/MapProvider";
 
 export const useRenderMap = () => {
-
-    const { setVehicleSelected, setEmissionKm, setTotalEmission, setTextDistance, setTextTime } = useContext(MapContext)
+    
+    
+    const { LambdaCalculateEmission } = useFetch()
+    const {setTextDistance, setTextTime} = useContext(MapContext)
 
     const { mapRef } = useContext(MapContext)
 
@@ -67,13 +69,10 @@ export const useRenderMap = () => {
                             const NumberTime = result?.rows[0].elements[0].duration?.value;
 
                             if (NumberDistance && NumberTime && distanceInText && timeInText) {
-
+                         
                                 setTextDistance(distanceInText)
                                 setTextTime(timeInText)
-                                
-                                const { LambdaCalculateEmission } = useFetch()
-                                const response = LambdaCalculateEmission(NumberDistance, NumberTime, vehicle)
-
+                                LambdaCalculateEmission(NumberDistance, NumberTime, vehicle)
                             }
                         }
                     }
