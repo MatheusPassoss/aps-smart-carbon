@@ -6,18 +6,19 @@ import { MapContext } from "../context/MapContext"
 import { motion } from "framer-motion"
 import { fromTheLeft, fromTheRight } from "../animations/data"
 import { useResults } from "../hooks/useResults"
+import { useFetch } from "../hooks/useFetch"
+import { useRenderMap } from "../hooks/useRenderMap"
 
 
 export const VehiclesInfo = () => {
 
-    const { emissionKm, totalEmission } = useContext(MapContext)
-    var TextDistance = 0
-    var TextTime = 0
-
+    const {vehicleSelected, EmissionKm, TotalEmission, TextDistance, TextTime} = useContext(MapContext)
  
+
+
     const setWorldIcon = () => {
 
-        if (totalEmission == "0")
+        if (TotalEmission == 0)
             return "/assets/ilustration/happyplanet.svg"
 
         return "/assets/ilustration/sadplanet.svg"
@@ -33,15 +34,15 @@ export const VehiclesInfo = () => {
                 className="py-5 w-full md:px-3 flex justify-center items-center">
                 <Card
                     type="image"
-                    // Icon={ }
+                    Icon={Car}
 
                     title={"Distância e tempo"}
 
                     subtitle01={"Distância em KM:"}
-                    content01={`${TextDistance || "0"}`}
+                    content01={`${TextDistance}`}
 
                     subtitle02={"Tempo total:"}
-                    content02={`${TextTime || "0"}`}
+                    content02={`${TextTime}`}
                 />
             </motion.aside>
             <motion.aside
@@ -53,10 +54,10 @@ export const VehiclesInfo = () => {
                     title={"Carbono emitido"}
 
                     subtitle01={"Emissão por KM:"}
-                    content01={`${emissionKm || "0"}`}
+                    content01={`${EmissionKm}`}
 
                     subtitle02={"Total em gramas"}
-                    content02={`${totalEmission || "0"}`}
+                    content02={`${TotalEmission}`}
                 />
             </motion.aside>
         </section>

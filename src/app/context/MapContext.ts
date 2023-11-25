@@ -1,16 +1,23 @@
 'use client'
 
-import { createContext } from "react"
+import { SetStateAction, createContext, Dispatch } from "react"
 import { RefObject } from "react"
+import { vehicleOpt } from "./MapProvider"
 
 interface MapValues {
-    textDistance: String
-    textTime: String,
-    NumberDistance: Number,
-    NumberTime: Number,
-    emissionKm: string
-    totalEmission: string
+    vehicle: vehicleOpt
+    setVehicle: Dispatch<SetStateAction<vehicleOpt>>
     mapRef: RefObject<HTMLDivElement>
+    vehicleSelected: string
+    setVehicleSelected: Dispatch<SetStateAction<string>>
+    EmissionKm: number
+    setEmissionKm: Dispatch<SetStateAction<number>>
+    TotalEmission: number
+    setTotalEmission: Dispatch<SetStateAction<number>>
+    TextDistance: string
+    setTextDistance: Dispatch<SetStateAction<string>>
+    TextTime: string
+    setTextTime: Dispatch<SetStateAction<string>>
 }
 
 

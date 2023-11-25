@@ -23,5 +23,5 @@ export const Input = forwardRef((props: InputProps, ref: Ref<HTMLInputElement>) 
     );
 });
 
- 
+// erro no Slint
 Input.displayName = "Input";

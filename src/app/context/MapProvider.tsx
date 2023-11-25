@@ -8,6 +8,13 @@ interface MapProviderProps {
    children: React.ReactNode
 }
 
+export enum vehicleOpt {
+   DRIVING = "DRIVING",
+   TRANSIT = "TRANSIT",
+   BICYCLING = "BICYCLING",
+   WALKING = "WALKING"
+}
+
 export const MapProvider = ({ children }: MapProviderProps) => {
 
    const centeredOnUnip = {
@@ -32,49 +39,20 @@ export const MapProvider = ({ children }: MapProviderProps) => {
       }
    }, []);
 
-
-
-
-
-
-
-
-
-
-   const [textDistance, setTextDistance] = useState<String>("")
-   const [textTime, setTextTime] = useState<String>("")
-
-   const [NumberDistance, setNumberDistance] = useState<Number>(0)
-   const [NumberTime, setNumberTime] = useState<Number>(0)
-
-   const [totalEmission, setTotalEmission] = useState<string>("")
-
-   const [emissionKm, setEmission] = useState<string>("")
- 
-
-
+   const [vehicleSelected, setVehicleSelected] = useState<string>('car')
+   const [EmissionKm, setEmissionKm] = useState<number>(0)
+   const [TotalEmission, setTotalEmission] = useState<number>(0)
+   const [TextDistance, setTextDistance] = useState<string>('0')
+   const [TextTime, setTextTime] = useState<string>('0')
 
 
  
 
 
-
-
-
-   const setResults = (TextDistance: string, TextTime: string, VehicleResult: string, emissionKm: string, totalEmission: string) => {
-      if (TextDistance != "" && TextTime != "" && VehicleResult != "" && emissionKm != null && totalEmission != null) {
-         setTextDistance(TextDistance)
-         setTextTime(TextTime);
-         setEmission(emissionKm);
-         setTotalEmission(totalEmission);
-
-      }
-   }
-
-
+   const [vehicle, setVehicle] = useState<vehicleOpt>(vehicleOpt.DRIVING)
 
    return (
-      <MapContext.Provider value={{ mapRef, emissionKm, totalEmission, textDistance, textTime, NumberDistance, NumberTime}}>
+      <MapContext.Provider value={{ vehicle, setVehicle, mapRef, vehicleSelected, setVehicleSelected, EmissionKm, setEmissionKm, TotalEmission, setTotalEmission, TextDistance, setTextDistance, TextTime, setTextTime}}>
          {children}
       </MapContext.Provider>
    )

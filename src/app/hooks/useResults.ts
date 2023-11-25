@@ -1,6 +1,6 @@
 
 
-export const useResults = (TextDistance: string, TextTime: string, NumberDistance: number, NumberTime: number) => {
+export const useResults = (TextDistance: string, TextTime: string, NumberDistance: number, NumberTime: number, totalEmission: string, emissionKm: string, vehicle: string) => {
 
 
     if (!TextDistance && !TextTime && !NumberDistance && !NumberTime) {
@@ -12,10 +12,7 @@ export const useResults = (TextDistance: string, TextTime: string, NumberDistanc
     }
 
     return {
-        TextDistance,
-        TextTime,
-        NumberDistance,
-        NumberTime
+        TextDistance, TextTime, totalEmission, emissionKm, vehicle
     }
 
 }

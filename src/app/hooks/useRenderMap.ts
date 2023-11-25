@@ -1,14 +1,16 @@
 import { MapContext } from "../context/MapContext";
 import { useApi } from "./useApi";
 import { useFetch } from "./useFetch";
-import { useMap } from "./useMap";
-import { useContext, useEffect, useRef } from "react";
+import { useContext, useEffect, useState } from "react";
+import { vehicleOpt } from "../context/MapProvider";
 
 export const useRenderMap = () => {
 
-    const { mapRef } = useContext(MapContext)
-    const { isLoaded, directionsRenderer, directionsService, service } = useApi();
+    const { setVehicleSelected, setEmissionKm, setTotalEmission, setTextDistance, setTextTime } = useContext(MapContext)
 
+    const { mapRef } = useContext(MapContext)
+
+    const { isLoaded, directionsRenderer, directionsService, service } = useApi()
 
     const centeredOnUnip = {
         lat: -23.632608446295116,
@@ -20,6 +22,7 @@ export const useRenderMap = () => {
         center: centeredOnUnip,
     };
 
+
     useEffect(() => {
         if (isLoaded && mapRef.current) {
             const map = new google.maps.Map(mapRef.current, mapOptions);
@@ -27,20 +30,19 @@ export const useRenderMap = () => {
         }
     }, [isLoaded]);
 
+    const calculateRoute = async (Origin: string, Destination: string, vehicle: vehicleOpt) => {
 
-    const calculateRoute = (Origin: string, Destination: string, vehicle: string) => {
 
         if (isLoaded && mapRef.current) {
             const map = new google.maps.Map(mapRef.current, mapOptions);
             directionsRenderer?.setMap(map);
 
             try {
-                console.log('entrou no try')
                 directionsService?.route(
                     {
                         origin: Origin,
                         destination: Destination,
-                        travelMode: google.maps.TravelMode.DRIVING,
+                        travelMode: google.maps.TravelMode[vehicle]
                     },
                     function (result, status) {
                         if (status === "OK") {
@@ -55,18 +57,23 @@ export const useRenderMap = () => {
                     {
                         origins: [Origin],
                         destinations: [Destination],
-                        travelMode: google.maps.TravelMode.DRIVING,
+                        travelMode: google.maps.TravelMode[vehicle]
                     },
-                    function (result, status) {
+                    async function (result, status) {
                         if (status === "OK") {
-                            const TextDistance = result?.rows[0].elements[0].distance?.text;
-                            const TextTime = result?.rows[0].elements[0].duration?.text;
+                            const distanceInText = result?.rows[0].elements[0].distance?.text;
+                            const timeInText = result?.rows[0].elements[0].duration?.text;
                             const NumberDistance = result?.rows[0].elements[0].distance?.value;
                             const NumberTime = result?.rows[0].elements[0].duration?.value;
 
-                            if (NumberDistance && NumberTime) {
-                                console.log("chamou o fetch?")
-                                useFetch(NumberDistance, NumberTime, vehicle);
+                            if (NumberDistance && NumberTime && distanceInText && timeInText) {
+
+                                setTextDistance(distanceInText)
+                                setTextTime(timeInText)
+                                
+                                const { LambdaCalculateEmission } = useFetch()
+                                const response = LambdaCalculateEmission(NumberDistance, NumberTime, vehicle)
+
                             }
                         }
                     }
@@ -78,7 +85,10 @@ export const useRenderMap = () => {
         }
     }
 
-    return { mapRef, calculateRoute }
+    return {
+        mapRef,
+        calculateRoute,
+    }
 
 };
 
