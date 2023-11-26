@@ -1,9 +1,9 @@
-import { Button } from "./components/Button"
-import { Map } from "./components/Map"
-import { RouteInfo } from "./components/RouteInfo"
-import { RouteImpact } from "./components/RouteImpact"
-import { Article } from "./animations/Article"
-import { Ilustration } from "./animations/Ilustration"
+import { Button } from "../components/Button"
+import { Map } from "../components/Map"
+import { RouteInfo } from "../components/RouteInfo"
+import { RouteImpact } from "../components/RouteImpact"
+import { Article } from "../components/animations/Article"
+import { Ilustration } from "../components/animations/Ilustration"
 import Link from "next/link"
 
 
@@ -11,7 +11,7 @@ export default function Home() {
   return (
     <>
 
-      <main className="max-md:min-h-screen md:min-h-[70vh] container m-auto flex flex-wrap items-center justify-center pt-20 pb-10 xl:flex-row xl:flex-nowrap xl:justify-evenly overflow-hidden">
+      <main className="max-md:min-h-screen md:min-h-[70vh] container m-auto flex flex-wrap items-center justify-center lg:pt-40 pt-20 lg:pb-20 pb-10 xl:flex-row xl:flex-nowrap xl:justify-evenly overflow-hidden">
         <aside className="px-3 py-5 pt-3 text-black-custom max-w-2xl min-[992px]:max-w-3xl  flex flex-col gap-5 md:py-10 xl:self-start xl:gap-10">
           <h1 className="text-2xl font-bold md:text-5xl lg:text-6xl">Smart Carbon</h1>
           <p className="text-lg py-5 md:text-xl">Revolucionando a mobilidade através da sustentabilidade. Uma pesquisa sobre como a população pode ser aliada na corrida contra o aquecimento global.</p>

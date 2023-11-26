@@ -5,7 +5,7 @@ import { useRef, useContext } from 'react';
 import { Autocomplete } from '@react-google-maps/api';
 import { Input } from './Input';
 import { motion } from "framer-motion"
-import { fromTheBotton } from "../animations/data"
+import { fromTheBotton } from "./animations/data"
 import { Button } from './Button';
 import { MapContext } from '../context/MapContext';
 import { useRenderMap } from '../hooks/useRenderMap';

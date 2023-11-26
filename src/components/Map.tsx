@@ -1,7 +1,7 @@
 'use client'
 import { useApi } from "../hooks/useApi";
 import { MapNav } from "./MapNav";
-import { Ilustration } from "../animations/Ilustration";
+import { Ilustration } from "./animations/Ilustration";
 import { useRenderMap } from "../hooks/useRenderMap";
 
 export const Map = () => {

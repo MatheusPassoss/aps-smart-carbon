@@ -1,4 +1,4 @@
-import { Florest } from "../animations/Florest"
+import { Florest } from "./animations/Florest"
 import { Button } from "./Button"
 import { ArrowCircleUp } from "./Phospor"
 import Link from "next/link"

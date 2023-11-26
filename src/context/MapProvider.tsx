@@ -27,6 +27,8 @@ export const MapProvider = ({ children }: MapProviderProps) => {
    const mapRef = useRef<HTMLDivElement>(null);
    const { directionsRenderer } = useApi()
 
+   const [hasOpen, setHasOpen] = useState<boolean>(false)
+
 
    const centeredOnUnip = {
       lat: -23.632608446295116,
@@ -48,7 +50,7 @@ export const MapProvider = ({ children }: MapProviderProps) => {
    }, []);
 
    return (
-      <MapContext.Provider value={{ vehicle, setVehicle, mapRef, vehicleSelected, setVehicleSelected, EmissionKm, setEmissionKm, TotalEmission, setTotalEmission, TextDistance, setTextDistance, TextTime, setTextTime, hasRoute, setHasRoute }}>
+      <MapContext.Provider value={{ hasOpen, setHasOpen, vehicle, setVehicle, mapRef, vehicleSelected, setVehicleSelected, EmissionKm, setEmissionKm, TotalEmission, setTotalEmission, TextDistance, setTextDistance, TextTime, setTextTime, hasRoute, setHasRoute }}>
          {children}
       </MapContext.Provider>
    )

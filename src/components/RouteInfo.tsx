@@ -4,7 +4,7 @@ import { Card } from "./Card"
 import { useContext } from "react"
 import { MapContext } from "../context/MapContext"
 import { motion } from "framer-motion"
-import { fromTheLeft, fromTheRight } from "../animations/data"
+import { fromTheLeft, fromTheRight } from "./animations/data"
 
 export const RouteInfo = () => {
 

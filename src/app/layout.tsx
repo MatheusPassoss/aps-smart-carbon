@@ -1,7 +1,8 @@
 import './globals.css'
 import type { Metadata } from 'next'
 import { Poppins } from 'next/font/google'
-import { MapProvider } from '@/app/context/MapProvider'
+import { MapProvider } from '@/context/MapProvider'
+import { Header } from '../components/Header'
 
 
 const poppins = Poppins({ weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'], subsets: ['latin'] })
@@ -20,7 +21,8 @@ export default function RootLayout({
     <html lang="pt-br" className='!scroll-smooth'>
       <body className={poppins.className}>
         <MapProvider>
-          {children}
+          <Header />
+            {children}
         </MapProvider>
       </body>
     </html>

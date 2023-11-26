@@ -20,6 +20,8 @@ interface MapValues {
     setTextTime: Dispatch<SetStateAction<string>>
     hasRoute: boolean
     setHasRoute: Dispatch<SetStateAction<boolean>>
+    hasOpen: boolean
+    setHasOpen: Dispatch<SetStateAction<boolean>>
 }
 
 
