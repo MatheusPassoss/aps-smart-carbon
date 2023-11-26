@@ -9,8 +9,8 @@ export const Routes = () => {
 
     const routes = [
         { name: "Início", href: "/", current: `${segment}` == "" ? true : false },
-        { name: "Pesquisa", href: "/equipe", current: `${segment[1]}` === "apoie" ? true : false },
-        { name: "Sobre nós", href: "/pesquisa", current: `${segment[1]}` === "eventos" ? true : false },
+        { name: "Pesquisa", href: "/pesquisa", current: `${segment[1]}` === "pesquisa" ? true : false },
+        { name: "Sobre nós", href: "/equipe", current: `${segment[1]}` === "equipe" ? true : false },
     ]
 
 

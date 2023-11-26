@@ -20,12 +20,12 @@ export const Map = () => {
           <MapNav />
         </aside>
         <figure className="max-lg:hidden lg:flex lg:justify-end lg:items-center">
-          <Ilustration person="aleff" typeAnimation="fromTheBotton" />
+          <Ilustration person="allef" typeAnimation="fromTheBotton" />
         </figure>
       </aside>
       <figure ref={mapRef} className="min-h-[65vh] xl:min-h-[75vh]" />
       <figure className="px-3 flex flex-col items-center gap-8 lg:hidden ">
-        <Ilustration person="aleff" typeAnimation="fromTheBotton" />
+        <Ilustration person="allef" typeAnimation="fromTheBotton" />
       </figure>
     </section>
   );

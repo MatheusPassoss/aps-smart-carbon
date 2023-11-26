@@ -2,9 +2,10 @@
 
 import { MapContext } from "@/context/MapContext"
 import { useContext } from "react"
-import { X, List } from "@phosphor-icons/react"
+import { X, List, House } from "@phosphor-icons/react"
 import { useSelectedLayoutSegments } from "next/navigation"
 import Link from "next/link"
+import { topics } from "@/data"
 
 export const Sidenav = () => {
 
@@ -13,8 +14,8 @@ export const Sidenav = () => {
 
     const routes = [
         { name: "Início", href: "/", current: `${segment}` == "" ? true : false },
-        { name: "Pesquisa", href: "/equipe", current: `${segment[1]}` === "apoie" ? true : false },
-        { name: "Sobre nós", href: "/pesquisa", current: `${segment[1]}` === "eventos" ? true : false },
+        { name: "Pesquisa", href: "/pesquisa", current: `${segment[1]}` === "pesquisa" ? true : false },
+        { name: "Sobre nós", href: "/equipe", current: `${segment[1]}` === "equipe" ? true : false },
     ]
 
     return (
@@ -37,6 +38,19 @@ export const Sidenav = () => {
                         )
                     })}
                 </ul>
+                {/* {segment[1] === "pesquisa" &&  (
+                    <ul className="flex flex-col gap-2 pl-5">
+                        {topics.map((topic, index) => {
+                            return (
+                                <li key={index} className="text-lg">
+                                    <Link href={`#${topic.href}`}>
+                                        {topic.hierarchy}
+                                    </Link>
+                                </li>
+                            )
+                        })}
+                    </ul>
+                )} */}
             </aside>
         </nav>
     )
