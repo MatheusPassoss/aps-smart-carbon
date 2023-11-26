@@ -27,7 +27,7 @@ export default function Pesquisa() {
                 </aside>
             </main>
 
-            {/* <section id="sumario" className="bg-black-custom py-10">
+            <section id="sumario" className="bg-black-custom py-10">
                 <aside className="container m-auto px-3 flex flex-col justify-center ">
                     <h2 className="font-bold text-3xl md:text-5xl">Sumário</h2>
                     <ul className="flex flex-col gap-2 pl-5 pt-10">
@@ -42,7 +42,7 @@ export default function Pesquisa() {
                         })}
                     </ul>
                 </aside>
-            </section> */}
+            </section>
 
             <section className="container m-auto px-3">
                 {articles.map((article, index) => {
