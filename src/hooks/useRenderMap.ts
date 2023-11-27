@@ -3,6 +3,7 @@ import { useApi } from "./useApi";
 import { useFetch } from "./useFetch";
 import { useContext, useEffect} from "react";
 import { vehicleOpt } from "../context/MapProvider";
+import { stylesMap } from "@/data";
 
 export const useRenderMap = () => {
     
@@ -22,6 +23,7 @@ export const useRenderMap = () => {
     const mapOptions = {
         zoom: 15,
         center: centeredOnUnip,
+        styles: stylesMap
     };
 
 

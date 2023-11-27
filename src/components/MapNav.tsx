@@ -67,11 +67,11 @@ export const MapNav = () => {
                 </fieldset>
 
                 <label className="text-white">Origem</label>
-                <Autocomplete className='w-full pb-3 pt-1'>
+                <Autocomplete className='w-full pb-3 pt-1' restrictions={{country: 'br'}}>
                     <Input inputRef={originRef} />
                 </Autocomplete>
                 <label className="text-white">Destino</label>
-                <Autocomplete className='w-full pb-5 pt-1'>
+                <Autocomplete className='w-full pb-5 pt-1' restrictions={{country: 'br'}}>
                     <Input inputRef={destinationRef} />
                 </Autocomplete>
                 <table className={`w-full ${hasRoute && "flex flex-col gap-5 md:flex-row"}`}>

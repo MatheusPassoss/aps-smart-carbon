@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react"
 import { MapContext } from "./MapContext"
 import { useApi } from "../hooks/useApi"
+import { stylesMap } from "@/data"
 
 interface MapProviderProps {
    children: React.ReactNode
@@ -35,10 +36,12 @@ export const MapProvider = ({ children }: MapProviderProps) => {
       lng: -46.69668773214834,
    };
 
+ 
    const mapOptions = {
       zoom: 15,
       center: centeredOnUnip,
-   };
+      styles: stylesMap
+  };
 
    useEffect(() => {
 

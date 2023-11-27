@@ -5,7 +5,6 @@ import { useContext } from "react"
 import { X, List, House } from "@phosphor-icons/react"
 import { useSelectedLayoutSegments } from "next/navigation"
 import Link from "next/link"
-import { topics } from "@/data"
 
 export const Sidenav = () => {
 
@@ -38,19 +37,6 @@ export const Sidenav = () => {
                         )
                     })}
                 </ul>
-                {/* {segment[1] === "pesquisa" &&  (
-                    <ul className="flex flex-col gap-2 pl-5">
-                        {topics.map((topic, index) => {
-                            return (
-                                <li key={index} className="text-lg">
-                                    <Link href={`#${topic.href}`}>
-                                        {topic.hierarchy}
-                                    </Link>
-                                </li>
-                            )
-                        })}
-                    </ul>
-                )} */}
             </aside>
         </nav>
     )

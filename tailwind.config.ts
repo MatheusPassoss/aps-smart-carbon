@@ -13,7 +13,7 @@ const config: Config = {
         'green-custom': '#27AE6F',
         'green-custom-strong': '#20975F',
         'gray-custom': '#F3F4F6',
-        'default': '#F0E5D7'
+        'default': '#F3F4F6'
       },
       textColor: {
         'black-custom': '#1B2E3A'

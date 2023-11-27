@@ -1,64 +1,45 @@
 import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/Button"
-import { articles, topics } from "@/data"
+import {ArrowCircleDown } from "@/components/Phospor"
+import {bibliografia} from "@/data"
 export default function Pesquisa() {
+
+
 
     return (
         <>
-
-            <main className="max-md:min-h-screen md:min-h-[70vh] container m-auto flex lg:pt-40 pt-20 lg:pb-20 pb-10">
-                <aside className="px-3 py-5 pt-3 text-black-custom small-notbook:max-w-6xl flex flex-col gap-5 md:py-10 xl:gap-8">
-                    <h1 className="text-4xl font-bold md:text-5xl lg:text-6xl">Pesquisa</h1>
-                    <aside className="container m-auto px-3 flex flex-col justify-center ">
-                        <h2 className="font-bold text-2xl md:text-5xl">Sumário</h2>
-                        <ul className="flex flex-col gap-2 pl-5 pt-10">
-                            {topics.map((topic, index) => {
-                                return (
-                                    <li key={index} className="text-lg">
-                                        <Link href={`#${topic.href}`}>
-                                            {topic.title}
-                                        </Link>
-                                    </li>
-                                )
-                            })}
-                        </ul>
-                    </aside>
+            <main className="max-md:min-h-screen md:min-h-[70vh] container m-auto flex flex-wrap items-center justify-center lg:pt-40 pt-20 lg:pb-20 pb-10 xl:flex-row xl:flex-nowrap xl:justify-evenly overflow-hidden">
+                <aside className="px-3 py-5 pt-3 text-black-custom max-w-2xl small-notbook:max-w-4xl  flex flex-col gap-5 md:py-10 xl:self-start xl:gap-8">
+                    <h1 className="text-2xl font-bold md:text-5xl lg:text-6xl">Pesquisa</h1>
+                    <p className="text-lg py-5 md:text-xl">O IPCC destaca que o transporte é responsável por cerca de 25% das emissões de gases de efeito estufa. Este trabalho aborda o desenvolvimento de uma aplicação para conscientizar sobre escolhas mais sustentáveis no transporte, explicando a relação da poluição atmosférica com as atividades humanas, conceitos como mercado e crédito de carbono, conscientização na era da conectividade e a programação da aplicação. A metodologia utilizada foi pesquisa bibliográfica em artigos científicos.</p>
+                    <Link className="w-full" href={"#time"}>
+                        <Button Title={"Baixar pesquisa"} RightIcon Icon={ArrowCircleDown}/>
+                    </Link>
                 </aside>
+                <Image src={"/assets/ilustration/search.svg"} alt="Ilustração dos membros da equipe" width={487} height={400} className="m-auto px-3" />
             </main>
 
-            <section id="sumario" className="bg-black-custom py-10">
-                <aside className="container m-auto px-3 flex flex-col justify-center ">
-                    <h2 className="font-bold text-3xl md:text-5xl">Sumário</h2>
-                    <ul className="flex flex-col gap-2 pl-5 pt-10">
-                        {topics.map((topic, index) => {
-                            return (
-                                <li key={index} className="text-lg">
-                                    <Link href={`#${topic.href}`}>
-                                        {topic.title}
+            <section className="bg-black-custom pt-10">
+                <aside className="container m-auto px-3 py-10">
+                    <h1 className="text-3xl md:text-5xl font-bold pb-10 pt-8">Bibliografia</h1>
+                    <ul>
+                        {bibliografia.map((reference, index) => (
+                            <li key={index} className="py-3">
+                                <h5 className="max-w-5xl font-bold text-green-500">{reference.titulo}</h5>
+                                <br />
+                                <h6 className="max-w-3xl">Autor: {reference.autor}</h6>
+                                {reference.acessoEm && <p>Acesso em: {reference.acessoEm}</p>}
+                                {reference.link && (
+                                    <Link href={reference.link} target="_blank" rel="noopener noreferrer">
+                                        Link: {reference.link}
                                     </Link>
-                                </li>
-                            )
-                        })}
+                                )}
+                            </li>
+                        ))}
                     </ul>
                 </aside>
             </section>
-
-            <section className="container m-auto px-3">
-                {articles.map((article, index) => {
-                    return (
-                        <article key={index} id={article.id} className="text-black-custom py-5 scroll-mt-16">
-                            <h3 className="text-2xl md:text-3xl font-bold">
-                                {article.title}
-                            </h3>
-                            <p className="text-lg py-3">
-                                {article.content}
-                            </p>
-                        </article>
-                    )
-                })}
-            </section>
-
         </>
     )
 }
