@@ -1,7 +1,7 @@
 'use client'
 import { motion } from "framer-motion"
 import Image from "next/image"
-import { fromTheBotton, fromTheLeft, fromTheRight } from "./data"
+import { fromTheBotton, fromTheLeft, fromTheRight } from "../data"
 
 type IlustrationProps = {
     person: string;

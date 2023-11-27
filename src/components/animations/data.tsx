@@ -20,11 +20,3 @@ export const fromTheBotton = {
     exit: { opacity: 0, x: 50 },
     transition: { duration: 0.3 }
 }
-
-
-
-
-
-export const CloudFromLeft = {
-    
-}

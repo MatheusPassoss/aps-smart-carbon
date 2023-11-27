@@ -1,5 +1,4 @@
 import Image from "next/image"
-import { Ilustration } from "./animations/Ilustration"
 
 interface TeamMemberProps {
     name: string

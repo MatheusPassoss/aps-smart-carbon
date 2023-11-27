@@ -11,6 +11,7 @@ import { MapContext } from '../context/MapContext';
 import { useRenderMap } from '../hooks/useRenderMap';
 import { vehicleOpt } from '../context/MapProvider';
 import Link from 'next/link';
+import {useModal} from '@/hooks/useModal'
 
 export const MapNav = () => {
 
@@ -20,15 +21,25 @@ export const MapNav = () => {
 
     const { calculateRoute } = useRenderMap()
 
-    const ValidationDataOfRequest = (): void => {
+    const ValidationDataOfRequest = () => {
 
         if (originRef.current?.value && destinationRef.current?.value && vehicle) calculateRoute(originRef.current?.value, destinationRef.current?.value, vehicle);
 
-        if (!originRef.current?.value) alert(`Origem vazia: ${originRef.current?.value}`);
+        if (!originRef.current?.value) {
 
-        if (!destinationRef.current?.value) alert(`Destino vazio: ${destinationRef.current?.value}`);
+            var title = 'Origem vazia!'
+            var content = 'A origem da rota está vazia ou foi digitada incorretamente. Digite a origem para prosseguir que seja possível traçar sua rota.'
+            
+            useModal(title, content)
+        }
 
-        if (!vehicle) alert(`Veículo não selecionado: ${vehicle}`);
+        if (!destinationRef.current?.value) {
+
+            var title = 'Destino vazio!'
+            var content = 'O Destino da rota está vazia ou foi digitada incorretamente. Digite a origem para prosseguir que seja possível traçar sua rota.'
+            
+            useModal(title, content)
+        }
     }
 
 

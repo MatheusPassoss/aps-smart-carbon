@@ -4,6 +4,7 @@ import { useFetch } from "./useFetch";
 import { useContext, useEffect} from "react";
 import { vehicleOpt } from "../context/MapProvider";
 import { stylesMap } from "@/data";
+import { useModal } from "./useModal";
 
 export const useRenderMap = () => {
     
@@ -82,6 +83,9 @@ export const useRenderMap = () => {
 
             } catch (error) {
                 console.error(error);
+                var title = 'Ops! Parece que houve algum erro...'
+                var content = 'Não foi possível traçar sua rota. Não houveram rotas para a origem, destino e veículo selecionados, insira uma nova rota ou tente novamente.'
+                useModal(title, content)
             }
         }
     }

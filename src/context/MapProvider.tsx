@@ -48,7 +48,7 @@ export const MapProvider = ({ children }: MapProviderProps) => {
       if (mapRef.current && directionsRenderer) {
          let map = new google.maps.Map(mapRef.current, mapOptions);
          directionsRenderer.setMap(map);
-
+ 
       }
    }, []);
 

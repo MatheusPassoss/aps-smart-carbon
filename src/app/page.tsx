@@ -2,9 +2,10 @@ import { Button } from "../components/Button"
 import { Map } from "../components/Map"
 import { RouteInfo } from "../components/RouteInfo"
 import { RouteImpact } from "../components/RouteImpact"
-import { Article } from "../components/animations/Article"
-import { Ilustration } from "../components/animations/Ilustration"
+import { Article } from "../components/animations/animated-components/Article"
+import { Ilustration } from "../components/animations/animated-components/Ilustration"
 import Link from "next/link"
+import { Modal } from "@/components/Modal"
 
 
 export default function Home() {
@@ -12,7 +13,7 @@ export default function Home() {
     <>
 
       <main className="max-md:min-h-screen md:min-h-[70vh] container m-auto flex flex-wrap items-center justify-center lg:pt-40 pt-20 lg:pb-20 pb-10 xl:flex-row xl:flex-nowrap xl:justify-evenly overflow-hidden">
-        <aside className="px-3 py-5 pt-3 text-black-custom max-w-2xl min-[992px]:max-w-3xl  flex flex-col gap-5 md:py-10 xl:self-start xl:gap-10">
+        <aside className="px-3 lg:px-8 py-5 pt-3 text-black-custom max-w-2xl min-[992px]:max-w-3xl  flex flex-col gap-5 md:py-10 xl:self-start xl:gap-10">
           <h1 className="text-2xl font-bold md:text-5xl lg:text-6xl">Smart Carbon</h1>
           <p className="text-lg py-5 md:text-xl">Revolucionando a mobilidade através da sustentabilidade. Uma pesquisa sobre como a população pode ser aliada na corrida contra o aquecimento global.</p>
           <Link className="w-full" href={"#calculo"}>
@@ -25,7 +26,7 @@ export default function Home() {
 
       <section className="relative bg-black-custom skew-y-3">
         <aside className="-skew-y-3 small-notbook:py-20 xl:py-40 container m-auto flex flex-wrap items-center justify-center xl:flex-row-reverse xl:flex-nowrap xl:justify-evenly">
-          <article className="text-white px-3 pb-5 pt-20 md:max-w-2xl small-notbook:max-w-3xl xl:max-2xl">
+          <article className="text-white px-3 lg:px-8 pb-5 pt-20 md:max-w-2xl small-notbook:max-w-3xl xl:max-2xl">
             <h2 className="text-2xl font-bold pb-5 md:text-3xl">Faça a diferença em suas viagens</h2>
             <p className="text-lg py-5">
               Ao escolher um meio de transporte mais sustentável você desempenha um papel fundamental para um planeta mais saudável para todos. Ajude na corrida contra o aquecimento global e tenha recompensas por isso!</p>
@@ -52,12 +53,12 @@ export default function Home() {
       </section>
 
       <section className="min-h-screen bg-default" id="info">
-        <aside className="container m-auto px-3 pt-20">
+        <aside className="container m-auto px-3 lg:px-8 pt-20">
           <h2 className="text-2xl text-black-custom font-bold lg:pb-16">Confira as informações da sua rota</h2>
           <RouteInfo />
         </aside>
 
-        <aside className="container m-auto px-3 pt-20">
+        <aside className="container m-auto px-3 lg:px-8 pt-20">
           <h2 className="text-2xl text-black-custom font-bold">O que seria necessário para repor o impacto?</h2>
           <RouteImpact />
         </aside>

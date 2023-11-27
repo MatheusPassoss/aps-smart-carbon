@@ -1,13 +1,13 @@
 'use client'
 
 import { motion } from "framer-motion"
-import {fromTheLeft} from "./data"
+import {fromTheLeft} from "../data"
 import { Car, Bus, Bicycle } from "@phosphor-icons/react"
 
 export const Article = () => {
 
     return (
-        <article className="relative text-black-custom m-auto flex flex-col items-start gap-10 pb-10 px-3 overflow-hidden xl:max-w-3xl min-[1535px]:max-w-4xl  min-[1620px]:max-w-none">
+        <article className="relative text-black-custom m-auto flex flex-col items-start gap-10 pb-10 px-3 lg:px-8 overflow-hidden xl:max-w-3xl min-[1535px]:max-w-4xl  min-[1620px]:max-w-none">
             <h2 className="text-2xl font-semibold md:text-3xl self-start">Como funciona o cálculo?</h2>
             <motion.aside className="flex"  {...fromTheLeft}>
                 <figure>
