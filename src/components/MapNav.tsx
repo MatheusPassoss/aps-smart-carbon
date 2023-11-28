@@ -11,7 +11,6 @@ import { MapContext } from '../context/MapContext';
 import { useRenderMap } from '../hooks/useRenderMap';
 import { vehicleOpt } from '../context/MapProvider';
 import Link from 'next/link';
-import {useModal} from '@/hooks/useModal'
 
 export const MapNav = () => {
 
@@ -30,7 +29,7 @@ export const MapNav = () => {
             var title = 'Origem vazia!'
             var content = 'A origem da rota está vazia ou foi digitada incorretamente. Digite a origem para prosseguir que seja possível traçar sua rota.'
             
-            useModal(title, content)
+            // useModal(title, content)
         }
 
         if (!destinationRef.current?.value) {
@@ -38,7 +37,7 @@ export const MapNav = () => {
             var title = 'Destino vazio!'
             var content = 'O Destino da rota está vazia ou foi digitada incorretamente. Digite a origem para prosseguir que seja possível traçar sua rota.'
             
-            useModal(title, content)
+            // useModal(title, content)
         }
     }
 
