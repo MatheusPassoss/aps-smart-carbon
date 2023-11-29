@@ -22,6 +22,12 @@ interface MapValues {
     setHasRoute: Dispatch<SetStateAction<boolean>>
     hasOpen: boolean
     setHasOpen: Dispatch<SetStateAction<boolean>>
+    isInvalid: boolean
+    setisInvalid: Dispatch<SetStateAction<boolean>>
+    emissionPassenger: string
+    setEmissionPassenger: Dispatch<SetStateAction<string>>
+    calory: string
+    setCalory: Dispatch<SetStateAction<string>>
 }
 
 

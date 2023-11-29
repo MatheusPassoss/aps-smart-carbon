@@ -1,7 +1,7 @@
 import Link from "next/link"
 import Image from "next/image"
-import { Button } from "@/components/Button"
-import { ArrowCircleDown } from "@/components/Phospor"
+import { Button } from "@/components/UI/Button"
+import { ArrowCircleDown } from "@/components/UI/icons/Phospor"
 import { bibliografia } from "@/data"
 export default function Pesquisa() {
 
@@ -22,12 +22,12 @@ export default function Pesquisa() {
 
             <section className="bg-black-custom pt-10">
                 <aside className="container m-auto px-3 lg:px-8 py-10">
-                    <h1 className="text-3xl md:text-5xl font-bold pb-10 pt-8">Bibliografia</h1>
+                    <h2 className="text-3xl md:text-5xl font-bold pb-10 pt-8">Bibliografia</h2>
                     <ul>
                         {bibliografia.map((reference, index) => (
                             <li key={index} className="py-5">
-                                <h5 className="max-w-5xl font-bold text-green-500 mb-2">{reference.titulo}</h5>
-                                <h6 className="max-w-3xl pt-1 pb-3"><span className="font-bold">Autor:</span> {reference.autor}</h6>
+                                <h4 className="max-w-5xl font-bold text-green-500 mb-2 break-words">{reference.titulo}</h4>
+                                <h5 className="max-w-3xl pt-1 pb-3 break-words"><span className="font-bold">Autor:</span> {reference.autor}</h5>
                                 {reference.link && (
                                     <Link href={reference.link} target="_blank" className="break-words">
                                         <span className="font-bold">Link: </span>{reference.link}

@@ -4,7 +4,7 @@ export const useApi = () => {
 
     const { isLoaded } = useLoadScript({
         googleMapsApiKey: "AIzaSyDxZ5VdV_iZ74LcmbnkxF-ekP89bp4iaPg",
-        libraries: ['places']
+        libraries: ['places'] 
     });
 
     let directionsService: google.maps.DirectionsService | undefined;

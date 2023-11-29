@@ -1,6 +1,6 @@
 'use client'
 import { Bus, Car, Bicycle, PersonSimpleWalk } from "@phosphor-icons/react"
-import { Card } from "./Card"
+import { Card } from "./UI/Card"
 import { useContext } from "react"
 import { MapContext } from "../context/MapContext"
 import { motion } from "framer-motion"

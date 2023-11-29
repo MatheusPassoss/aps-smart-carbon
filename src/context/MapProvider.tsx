@@ -18,7 +18,7 @@ export enum vehicleOpt {
 
 export const MapProvider = ({ children }: MapProviderProps) => {
 
-   const[hasRoute, setHasRoute] = useState<boolean>(false)
+   const [hasRoute, setHasRoute] = useState<boolean>(false)
    const [vehicleSelected, setVehicleSelected] = useState<string>('car')
    const [EmissionKm, setEmissionKm] = useState<string>('0')
    const [TotalEmission, setTotalEmission] = useState<string>('0')
@@ -27,6 +27,11 @@ export const MapProvider = ({ children }: MapProviderProps) => {
    const [vehicle, setVehicle] = useState<vehicleOpt>(vehicleOpt.DRIVING)
    const mapRef = useRef<HTMLDivElement>(null);
    const { directionsRenderer } = useApi()
+   const [isInvalid, setisInvalid] = useState<boolean>(false)
+
+
+   const [emissionPassenger, setEmissionPassenger] = useState<string>("")
+   const [calory, setCalory] = useState<string>("0")
 
    const [hasOpen, setHasOpen] = useState<boolean>(false)
 
@@ -36,24 +41,24 @@ export const MapProvider = ({ children }: MapProviderProps) => {
       lng: -46.69668773214834,
    };
 
- 
+
    const mapOptions = {
       zoom: 15,
       center: centeredOnUnip,
       styles: stylesMap
-  };
+   };
 
    useEffect(() => {
 
       if (mapRef.current && directionsRenderer) {
          let map = new google.maps.Map(mapRef.current, mapOptions);
          directionsRenderer.setMap(map);
- 
+
       }
    }, []);
 
    return (
-      <MapContext.Provider value={{ hasOpen, setHasOpen, vehicle, setVehicle, mapRef, vehicleSelected, setVehicleSelected, EmissionKm, setEmissionKm, TotalEmission, setTotalEmission, TextDistance, setTextDistance, TextTime, setTextTime, hasRoute, setHasRoute }}>
+      <MapContext.Provider value={{ emissionPassenger, setEmissionPassenger, calory, setCalory, isInvalid, setisInvalid, hasOpen, setHasOpen, vehicle, setVehicle, mapRef, vehicleSelected, setVehicleSelected, EmissionKm, setEmissionKm, TotalEmission, setTotalEmission, TextDistance, setTextDistance, TextTime, setTextTime, hasRoute, setHasRoute }}>
          {children}
       </MapContext.Provider>
    )

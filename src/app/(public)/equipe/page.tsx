@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Button } from "@/components/Button";
+import { Button } from "@/components/UI/Button";
 import Link from "next/link";
 import { TeamMember } from "@/components/TeamMembers";
 
@@ -21,13 +21,13 @@ export default function Equipe() {
                 <aside className="small-notbook:py-20 container m-auto flex flex-col justify-center px-3 lg:px-8" id="time">
                     <h2 className="text-xl font-bold md:text-4xl max-lg:text-center text-white lg:pb-10">Conheça nossa equipe!</h2>
                     <article className="flex flex-col items-center justify-center">
-                        <TeamMember name="julia" title="Julia Casimiro" subtitle="Scrum Master e Desenvolvedora" description="Gosto de ler, ouvir musica e aprender coisas novas. Entusiasta pela tecnologia porque ela pode ser usada para criar coisas incríveis e ajudar pessoas." />
+                        <TeamMember name="julia" title="Julia Casimiro" subtitle="Scrum Master e Desenvolvedora" description="Gosto de ler, ouvir musica e aprender coisas novas. Entusiasta pela tecnologia porque ela pode ser usada para criar coisas incríveis e ajudar pessoas." typeAnimation="fromTheLeft"/>
 
-                        <TeamMember reverse name="matheus" title="Matheus Passos" subtitle="Desenvolvedor Full Stack e Designer" description="Gosto de montanhas e paisagens bonitas. Amo a tecnologia e a infinidade de possibilidades que ela proporciona. Sou um desenvolvedor autodidata que adora trabalhar e em equipe e construir projetos incríveis" />
+                        <TeamMember typeAnimation="fromTheRight" reverse name="matheus" title="Matheus Passos" subtitle="Desenvolvedor Full Stack e Designer" description="Gosto de montanhas e paisagens bonitas. Amo a tecnologia e a infinidade de possibilidades que ela proporciona. Sou um desenvolvedor autodidata que adora trabalhar e em equipe e construir projetos incríveis" />
 
-                        <TeamMember name="hugo" title="Hugo Santana" subtitle="Desenvolvedor Java" description="Gosto de jogar futebol e de esportes. Apaixonado pela linguagem Java." />
+                        <TeamMember typeAnimation="fromTheLeft" name="hugo" title="Hugo Santana" subtitle="Desenvolvedor Java" description="Gosto de jogar futebol e de esportes. Apaixonado pela linguagem Java." />
 
-                        <TeamMember reverse name="allef" title="Allef dos Santos" subtitle="Desenvolvedor Python" description="Gosto de viajar e estar com a familia. Entusiasta em tecnologia com grande apego à linguagem Python." />
+                        <TeamMember  typeAnimation="fromTheRight" reverse name="allef" title="Allef dos Santos" subtitle="Desenvolvedor Python" description="Gosto de viajar e estar com a familia. Entusiasta em tecnologia com grande apego à linguagem Python." />
                     </article>
                 </aside>
             </section>

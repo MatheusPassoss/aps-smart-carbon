@@ -12,7 +12,7 @@ export const useRenderMap = () => {
     const { LambdaCalculateEmission } = useFetch()
     const {setTextDistance, setTextTime, setHasRoute} = useContext(MapContext)
 
-    const { mapRef } = useContext(MapContext)
+    const { mapRef, setisInvalid } = useContext(MapContext)
 
     const { isLoaded, directionsRenderer, directionsService, service } = useApi()
 
@@ -54,6 +54,8 @@ export const useRenderMap = () => {
                             console.log('traçou o resultado?')
                             console.log(result)
                             directionsRenderer?.setDirections(result);
+                        } else {
+                            setisInvalid(true)
                         }
                     }
                 );
@@ -77,12 +79,15 @@ export const useRenderMap = () => {
                                 setTextTime(timeInText)
                                 LambdaCalculateEmission(NumberDistance, NumberTime, vehicle)
                             }
+                        } else {
+                            setisInvalid(true)
                         }
                     }
                 );
 
             } catch (error) {
                 console.error(error);
+                setisInvalid(true)
             }
         }
     }

@@ -2,8 +2,8 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { Poppins } from 'next/font/google'
 import { MapProvider } from '@/context/MapProvider'
-import { Header } from '../components/Header'
-import { Footer } from '@/components/Footer'
+import { Header } from '../components/UI/Header'
+import { Footer } from '@/components/UI/Footer'
 
 
 const poppins = Poppins({ weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'], subsets: ['latin'] })

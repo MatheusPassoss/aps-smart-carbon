@@ -1,4 +1,5 @@
 import Image from "next/image"
+import { Ilustration } from "./animations/animated-components/Ilustration"
 
 interface TeamMemberProps {
     name: string
@@ -7,18 +8,21 @@ interface TeamMemberProps {
     subtitle: string
     reverse?: boolean
     notDark?: boolean
+    typeAnimation: "fromTheLeft" | "fromTheRight" | "fromTheBotton"
 }
 
-export const TeamMember = ({ name, title, description, subtitle, reverse = false, notDark = false }: TeamMemberProps) => {
+export const TeamMember = ({ name, title, description, subtitle, reverse = false, notDark = false, typeAnimation }: TeamMemberProps) => {
     return (
         <article className={`px-3 py-10 pb-20 relative flex flex-col items-center gap-10 ${reverse ? 'lg:flex-row-reverse' : "lg:flex-row"}`}>
             <aside className={`flex flex-col items-center gap-10 ${reverse ? 'lg:flex-row-reverse' : "lg:flex-row"}`}>
-                <picture className={`${notDark && 'text-black-custom'}`}>
+                <picture className={`relative ${notDark && 'text-black-custom'}`}>
                     <div className="lg:hidden pb-5">
                         <h3 className="pt-5 text-2xl max-lg:text-center">{title}</h3>
                         <h5 className="text-base max-lg:text-center">{subtitle}</h5>
                     </div>
-                    <Image src={`/assets/persons/alone${name}.svg`} alt={`ilustração do ${name}`} width={360} height={380} />
+                    <figure className="relative overflow-hidden">
+                        <Ilustration person={`alone${name}`} typeAnimation={typeAnimation} />
+                    </figure>
                 </picture>
                 <aside className={`lg:self-start flex flex-col lg:items-start gap-5 ${notDark && 'text-black-custom'}`} >
                     <div className="max-lg:hidden" >

@@ -9,12 +9,16 @@ interface CardProps {
     content01: string
     subtitle02: String
     content02: string
+    subtitle03?: String
+    content03?: string
+    subtitle04?: String
+    content04?: string
     hasImage?: boolean
     icon?: React.FC<IconProps>
 }
 
 
-export const Card = ({ content02, subtitle02, content01, title, subtitle01, icon: Icon, hasImage, altImg = '', srcImg = '' }: CardProps) => {
+export const Card = ({ content04, subtitle04, content03, subtitle03, content02, subtitle02, content01, title, subtitle01, icon: Icon, hasImage, altImg = '', srcImg = '' }: CardProps) => {
 
     return (
         <article className="text-black-custom bg-white rounded-md py-5 px-2 w-full max-w-md shadow-xl relative flex flex-col justify-start">
@@ -35,6 +39,14 @@ export const Card = ({ content02, subtitle02, content01, title, subtitle01, icon
                     <h5 className="font-semibold">{subtitle02}</h5>
                     <p>{`${content02}`}</p>
                 </li>
+                {subtitle03 && content03 && (<li className="flex gap-2">
+                    <h5 className="font-semibold">{subtitle03}</h5>
+                    <p>{`${content03}`}</p>
+                </li>)}
+                {subtitle04 && content04 && (<li className="flex gap-2">
+                    <h5 className="font-semibold">{subtitle04}</h5>
+                    <p>{`${content04}`}</p>
+                </li>)}
             </ul>
             {
                 hasImage &&

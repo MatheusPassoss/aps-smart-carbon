@@ -5,7 +5,7 @@ import { MapContext } from "../context/MapContext";
 export const useFetch = () => {
     
     
-    const { setVehicleSelected, setEmissionKm, setTotalEmission } = useContext(MapContext);
+    const { setVehicleSelected, setEmissionKm, setTotalEmission, setEmissionPassenger, setCalory } = useContext(MapContext);
 
    
     const LambdaCalculateEmission = async (NumberDistance: number, NumberTime: number, vehicle: string) => {
@@ -24,13 +24,23 @@ export const useFetch = () => {
             });
 
             const data = await response.json();
-
+            console.log(data)
 
             if (data) {
                 const body = JSON.parse(data.body)
                 setVehicleSelected(body.vehicle);
                 setEmissionKm(body.emissionKm);
                 setTotalEmission(body.totalEmission);
+
+                switch (body.vehicle) {
+
+                    case 'TRANSIT':
+                        setEmissionPassenger(body.emissionPassenger)
+                    
+                    case 'WALKING' || 'BICYCLING':
+
+                        setCalory(body.calory)
+                }
             }
 
         } catch (error) {
